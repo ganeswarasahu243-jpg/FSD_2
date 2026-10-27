@@ -6,6 +6,7 @@
     "install:all": "npm --prefix server install && npm --prefix client install",
     "migrate:data": "npm --prefix server run migrate",
     "test": "npm --prefix server test",
+    "test:atlas": "npm --prefix server run test:atlas",
     "build": "npm --prefix client run build",
     "build:prod": "npm run install:all && npm --prefix client run build",
     "start": "npm --prefix server start",

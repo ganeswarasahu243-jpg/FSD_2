@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:5000/dashboard",
- "at": "2026-10-27T05:01:22.959Z",
+ "at": "2026-10-27T05:07:32.869Z",
  "allow": [],
  "viewports": [
   {
@@ -26,7 +26,7 @@
      "h": 900
     },
     "page": {
-     "height": 1739,
+     "height": 1747,
      "screens": 1.9,
      "words": 363,
      "img": 0,
@@ -36,11 +36,11 @@
      "sections": 0,
      "horizontalOverflow": 0,
      "overflowCulprits": [],
-     "uiFragments": 16,
+     "uiFragments": 0,
      "uiAbuse": false,
      "realPictures": 0,
      "videoCount": 0,
-     "uiPictures": 9,
+     "uiPictures": 0,
      "pictureSamples": [],
      "blendText": 0,
      "sideScrollers": 0,
@@ -59,7 +59,7 @@
      "weight": 800,
      "tracking": -0.02,
      "leading": 1.2,
-     "top": 96,
+     "top": 100,
      "tag": "h1",
      "kind": "heading",
      "align": "left",
@@ -82,7 +82,7 @@
       "vw": 2.1,
       "font": "Manrope",
       "weight": 800,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
@@ -90,7 +90,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.32,
-      "top": 96,
+      "top": 100,
       "tag": "h1",
       "kind": "heading"
      },
@@ -103,7 +103,7 @@
       "vw": 2.1,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
@@ -111,7 +111,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.01,
-      "top": 237,
+      "top": 241,
       "tag": "h4",
       "kind": "heading"
      },
@@ -124,15 +124,15 @@
       "vw": 2.1,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.03,
-      "top": 237,
+      "widthRatio": 0.02,
+      "top": 241,
       "tag": "h4",
       "kind": "heading"
      },
@@ -145,7 +145,7 @@
       "vw": 2.1,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
@@ -153,7 +153,7 @@
       "align": "left",
       "position": "right",
       "widthRatio": 0.01,
-      "top": 237,
+      "top": 241,
       "tag": "h4",
       "kind": "heading"
      },
@@ -166,15 +166,15 @@
       "vw": 2.1,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
       "mono": false,
       "align": "left",
       "position": "right",
-      "widthRatio": 0.03,
-      "top": 237,
+      "widthRatio": 0.02,
+      "top": 241,
       "tag": "h4",
       "kind": "heading"
      }
@@ -203,21 +203,26 @@
      ],
      "familyCount": 2,
      "sizes": [
+      10,
+      11,
+      12,
       14,
       16,
+      18,
+      24,
       30
      ],
-     "sizeCount": 3,
+     "sizeCount": 8,
      "notLoaded": [],
      "body": {
-      "font": "Inter",
-      "size": 14,
-      "leading": 1.43,
-      "weight": 400,
-      "tracking": 0,
-      "contrast": 4.6
+      "font": "Manrope",
+      "size": 16,
+      "leading": 1.38,
+      "weight": 700,
+      "tracking": -0.02,
+      "contrast": 17.8
      },
-     "measureChars": 67,
+     "measureChars": 32,
      "max": {
       "size": 30,
       "vw": 2.1,
@@ -233,9 +238,50 @@
      "microSamples": [],
      "upperShare": 0.01,
      "centerShare": 0.05,
-     "smallText": 0
+     "smallText": 40
     },
-    "eyebrows": [],
+    "eyebrows": [
+     {
+      "text": "Total Policies",
+      "above": "6",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 213
+     },
+     {
+      "text": "Extracted Rules",
+      "above": "13",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 213
+     },
+     {
+      "text": "Activity Logs",
+      "above": "6",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 213
+     },
+     {
+      "text": "Policy Violations",
+      "above": "15",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 213
+     }
+    ],
     "numbered": [],
     "color": {
      "bodyBg": "#f8fafc",
@@ -257,7 +303,7 @@
       },
       {
        "color": "#ffffff",
-       "top": 346,
+       "top": 350,
        "hsl": {
         "h": 0,
         "s": 0,
@@ -268,7 +314,7 @@
      "textColors": [
       {
        "color": "#0f172b",
-       "share": 0.4
+       "share": 0.37
       },
       {
        "color": "#45556c",
@@ -280,7 +326,7 @@
       },
       {
        "color": "#314158",
-       "share": 0.05
+       "share": 0.07
       },
       {
        "color": "#9f0712",
@@ -294,18 +340,9 @@
        "s": 0,
        "l": 1
       },
-      "fg": "#1d293d"
+      "fg": "#ffffff"
      },
-     "lowContrast": [
-      {
-       "text": "Dashboard",
-       "ratio": 3.4,
-       "need": 4.5,
-       "size": 14,
-       "fg": "#0f172b",
-       "bg": "#155dfc"
-      }
-     ]
+     "lowContrast": []
     },
     "buttons": {
      "count": 17,
@@ -332,9 +369,15 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 0,
-     "hairlineSamples": [],
-     "outlinedBoxes": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "div.mt-5.grid 257px",
+      "div.mt-5.grid 257px",
+      "div.mt-5.grid 257px",
+      "div.mt-5.grid 257px",
+      "div.mt-5.grid 257px"
+     ],
+     "outlinedBoxes": 21,
      "dashed": 0,
      "blurred": 0,
      "roundedBoxes": 21,
@@ -348,19 +391,19 @@
        "count": 4,
        "iconTopped": true,
        "rounded": true,
-       "top": 188
+       "top": 192
       },
       {
        "count": 4,
        "iconTopped": false,
        "rounded": true,
-       "top": 439
+       "top": 443
       },
       {
        "count": 6,
        "iconTopped": true,
        "rounded": true,
-       "top": 553
+       "top": 557
       }
      ]
     },
@@ -382,29 +425,29 @@
      "w": 1440,
      "h": 900
     },
-    "pageH": 1739,
+    "pageH": 1747,
     "margins": {
-     "left": 157,
-     "right": 121
+     "left": 161,
+     "right": 125
     },
     "sections": [
      {
       "sel": "div.grid.gap-4",
       "tag": "div",
-      "top": 188,
+      "top": 192,
       "height": 126,
       "words": 22,
       "media": 0,
-      "middle": 106,
+      "middle": 104,
       "heading": {
        "text": "13",
        "size": 30,
        "tag": "h4"
       },
-      "left": 381,
-      "right": 183,
-      "textLeft": 381,
-      "textRight": 183,
+      "left": 385,
+      "right": 185,
+      "textLeft": 385,
+      "textRight": 185,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -414,7 +457,7 @@
      {
       "sel": "div.rounded-xl.border",
       "tag": "div",
-      "top": 346,
+      "top": 350,
       "height": 850,
       "words": 254,
       "media": 0,
@@ -424,10 +467,10 @@
        "size": 24,
        "tag": "p"
       },
-      "left": 381,
-      "right": 121,
-      "textLeft": 381,
-      "textRight": 142,
+      "left": 385,
+      "right": 125,
+      "textLeft": 385,
+      "textRight": 146,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -437,20 +480,20 @@
      {
       "sel": "div.grid.gap-6",
       "tag": "div",
-      "top": 1228,
+      "top": 1232,
       "height": 492,
       "words": 67,
       "media": 0,
-      "middle": 141,
+      "middle": 137,
       "heading": {
        "text": "Recent Policies",
        "size": 18,
        "tag": "h3"
       },
-      "left": 381,
-      "right": 121,
-      "textLeft": 381,
-      "textRight": 121,
+      "left": 385,
+      "right": 125,
+      "textLeft": 385,
+      "textRight": 125,
       "fullBleed": false,
       "footer": true,
       "hero": false,
@@ -463,28 +506,36 @@
      {
       "text": "Compliance Dashboard",
       "size": 30,
-      "top": 96,
+      "top": 100,
       "firstScreen": true
      }
     ],
     "edgeText": [],
     "edges": [
      {
-      "x": 360,
+      "x": 385,
+      "n": 3
+     },
+     {
+      "x": 364,
       "n": 2
+     },
+     {
+      "x": 883,
+      "n": 1
      }
     ],
-    "leftBlocks": 2,
+    "leftBlocks": 6,
     "bodySize": 16,
     "stage": false,
     "explains": false,
     "slivers": [],
-    "voidShare": 0.12,
+    "voidShare": 0.1,
     "voidBox": {
      "x": 0,
-     "y": 360,
+     "y": 420,
      "w": 360,
-     "h": 420
+     "h": 360
     }
    },
    "app": {
@@ -497,8 +548,8 @@
     "sidebar": null,
     "topbar": null,
     "canvas": {
-     "left": 129,
-     "right": 121
+     "left": 133,
+     "right": 125
     },
     "hero": {
      "text": "Compliance Dashboard",
@@ -511,7 +562,7 @@
      "weight": 800,
      "tracking": -0.02,
      "leading": 1.2,
-     "top": 96,
+     "top": 100,
      "tag": "h1",
      "kind": "heading",
      "align": "left",
@@ -551,27 +602,12 @@
      "glass": 0
     },
     "chips": {
-     "count": 6,
+     "count": 1,
      "hues": 1,
      "samples": [
       {
        "hue": 221,
        "size": 36,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
        "radius": "8px"
       }
      ]
@@ -587,7 +623,7 @@
     "chartHues": 0,
     "placeholders": [],
     "type": {
-     "under13": 0.45,
+     "under13": 0.5,
      "tiny": 2,
      "tinySamples": [
       "v1.0 10px",
@@ -607,9 +643,9 @@
     "title": {
      "text": "Compliance Dashboard",
      "size": 30,
-     "top": 96
+     "top": 100
     },
-    "colourShare": 0.02
+    "colourShare": 0.013
    },
    "consoleErrors": []
   },
@@ -637,7 +673,7 @@
      "h": 1024
     },
     "page": {
-     "height": 2680,
+     "height": 2688,
      "screens": 2.6,
      "words": 363,
      "img": 0,
@@ -647,11 +683,11 @@
      "sections": 0,
      "horizontalOverflow": 0,
      "overflowCulprits": [],
-     "uiFragments": 16,
+     "uiFragments": 0,
      "uiAbuse": false,
      "realPictures": 0,
      "videoCount": 0,
-     "uiPictures": 9,
+     "uiPictures": 0,
      "pictureSamples": [],
      "blendText": 0,
      "sideScrollers": 0,
@@ -670,7 +706,7 @@
      "weight": 800,
      "tracking": -0.02,
      "leading": 1.2,
-     "top": 100,
+     "top": 104,
      "tag": "h1",
      "kind": "heading",
      "align": "left",
@@ -693,15 +729,15 @@
       "vw": 3.9,
       "font": "Manrope",
       "weight": 800,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
       "mono": false,
       "align": "left",
       "position": "left",
-      "widthRatio": 0.56,
-      "top": 100,
+      "widthRatio": 0.59,
+      "top": 104,
       "tag": "h1",
       "kind": "heading"
      },
@@ -714,7 +750,7 @@
       "vw": 3.9,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
@@ -722,7 +758,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.02,
-      "top": 261,
+      "top": 265,
       "tag": "h4",
       "kind": "heading"
      },
@@ -735,7 +771,7 @@
       "vw": 3.9,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
@@ -743,7 +779,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.05,
-      "top": 261,
+      "top": 265,
       "tag": "h4",
       "kind": "heading"
      },
@@ -756,7 +792,7 @@
       "vw": 3.9,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
@@ -764,7 +800,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.02,
-      "top": 403,
+      "top": 407,
       "tag": "h4",
       "kind": "heading"
      },
@@ -777,7 +813,7 @@
       "vw": 3.9,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.2,
       "upper": false,
       "italic": false,
@@ -785,7 +821,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.05,
-      "top": 403,
+      "top": 407,
       "tag": "h4",
       "kind": "heading"
      }
@@ -814,21 +850,26 @@
      ],
      "familyCount": 2,
      "sizes": [
+      10,
+      11,
+      12,
       14,
       16,
+      18,
+      24,
       30
      ],
-     "sizeCount": 3,
+     "sizeCount": 8,
      "notLoaded": [],
      "body": {
-      "font": "Inter",
-      "size": 14,
-      "leading": 1.43,
-      "weight": 400,
-      "tracking": 0,
-      "contrast": 4.6
+      "font": "Manrope",
+      "size": 16,
+      "leading": 1.38,
+      "weight": 700,
+      "tracking": -0.02,
+      "contrast": 17.8
      },
-     "measureChars": 62,
+     "measureChars": 36,
      "max": {
       "size": 30,
       "vw": 3.9,
@@ -844,9 +885,50 @@
      "microSamples": [],
      "upperShare": 0.01,
      "centerShare": 0.05,
-     "smallText": 0
+     "smallText": 40
     },
-    "eyebrows": [],
+    "eyebrows": [
+     {
+      "text": "Total Policies",
+      "above": "6",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 237
+     },
+     {
+      "text": "Extracted Rules",
+      "above": "13",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 237
+     },
+     {
+      "text": "Activity Logs",
+      "above": "6",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 379
+     },
+     {
+      "text": "Policy Violations",
+      "above": "15",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 379
+     }
+    ],
     "numbered": [],
     "color": {
      "bodyBg": "#f8fafc",
@@ -868,7 +950,7 @@
       },
       {
        "color": "#ffffff",
-       "top": 512,
+       "top": 516,
        "hsl": {
         "h": 0,
         "s": 0,
@@ -879,7 +961,7 @@
      "textColors": [
       {
        "color": "#0f172b",
-       "share": 0.4
+       "share": 0.37
       },
       {
        "color": "#45556c",
@@ -891,7 +973,7 @@
       },
       {
        "color": "#314158",
-       "share": 0.05
+       "share": 0.07
       },
       {
        "color": "#9f0712",
@@ -905,18 +987,9 @@
        "s": 0,
        "l": 1
       },
-      "fg": "#1d293d"
+      "fg": "#ffffff"
      },
-     "lowContrast": [
-      {
-       "text": "Dashboard",
-       "ratio": 3.4,
-       "need": 4.5,
-       "size": 14,
-       "fg": "#0f172b",
-       "bg": "#155dfc"
-      }
-     ]
+     "lowContrast": []
     },
     "buttons": {
      "count": 17,
@@ -943,9 +1016,15 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 0,
-     "hairlineSamples": [],
-     "outlinedBoxes": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "div.mt-5.grid 289px",
+      "div.mt-5.grid 289px",
+      "div.mt-5.grid 289px",
+      "div.mt-5.grid 289px",
+      "div.mt-5.grid 289px"
+     ],
+     "outlinedBoxes": 21,
      "dashed": 0,
      "blurred": 0,
      "roundedBoxes": 21,
@@ -959,19 +1038,19 @@
        "count": 4,
        "iconTopped": true,
        "rounded": true,
-       "top": 212
+       "top": 216
       },
       {
        "count": 4,
        "iconTopped": false,
        "rounded": true,
-       "top": 627
+       "top": 631
       },
       {
        "count": 6,
        "iconTopped": true,
        "rounded": true,
-       "top": 741
+       "top": 745
       }
      ]
     },
@@ -993,28 +1072,28 @@
      "w": 768,
      "h": 1024
     },
-    "pageH": 2680,
+    "pageH": 2688,
     "margins": {
-     "left": 41,
-     "right": 41
+     "left": 45,
+     "right": 45
     },
     "sections": [
      {
       "sel": "div.grid.gap-4",
       "tag": "div",
-      "top": 212,
+      "top": 216,
       "height": 268,
       "words": 22,
       "media": 0,
-      "middle": 219,
+      "middle": 215,
       "heading": {
        "text": "13",
        "size": 30,
        "tag": "h4"
       },
-      "left": 41,
+      "left": 45,
       "right": 191,
-      "textLeft": 41,
+      "textLeft": 45,
       "textRight": 191,
       "fullBleed": false,
       "footer": false,
@@ -1025,7 +1104,7 @@
      {
       "sel": "div.rounded-xl.border",
       "tag": "div",
-      "top": 512,
+      "top": 516,
       "height": 1191,
       "words": 254,
       "media": 0,
@@ -1035,10 +1114,10 @@
        "size": 24,
        "tag": "p"
       },
-      "left": 41,
-      "right": 41,
-      "textLeft": 41,
-      "textRight": 62,
+      "left": 45,
+      "right": 45,
+      "textLeft": 45,
+      "textRight": 66,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -1048,20 +1127,20 @@
      {
       "sel": "div.grid.gap-6",
       "tag": "div",
-      "top": 1735,
+      "top": 1739,
       "height": 925,
       "words": 67,
       "media": 0,
-      "middle": 352,
+      "middle": 356,
       "heading": {
        "text": "Recent Policies",
        "size": 18,
        "tag": "h3"
       },
-      "left": 41,
-      "right": 41,
-      "textLeft": 41,
-      "textRight": 41,
+      "left": 45,
+      "right": 45,
+      "textLeft": 45,
+      "textRight": 45,
       "fullBleed": false,
       "footer": true,
       "hero": false,
@@ -1074,18 +1153,22 @@
      {
       "text": "Compliance Dashboard",
       "size": 30,
-      "top": 100,
+      "top": 104,
       "firstScreen": true
      }
     ],
     "edgeText": [],
     "edges": [
      {
-      "x": 20,
+      "x": 45,
+      "n": 4
+     },
+     {
+      "x": 24,
       "n": 2
      }
     ],
-    "leftBlocks": 2,
+    "leftBlocks": 6,
     "bodySize": 16,
     "stage": false,
     "explains": false,
@@ -1108,8 +1191,8 @@
     },
     "topbar": null,
     "canvas": {
-     "left": 7,
-     "right": 41
+     "left": 16,
+     "right": 45
     },
     "hero": {
      "text": "Compliance Dashboard",
@@ -1122,7 +1205,7 @@
      "weight": 800,
      "tracking": -0.02,
      "leading": 1.2,
-     "top": 100,
+     "top": 104,
      "tag": "h1",
      "kind": "heading",
      "align": "left",
@@ -1162,27 +1245,12 @@
      "glass": 0
     },
     "chips": {
-     "count": 6,
+     "count": 1,
      "hues": 1,
      "samples": [
       {
        "hue": 221,
        "size": 28,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
        "radius": "8px"
       }
      ]
@@ -1198,7 +1266,7 @@
     "chartHues": 0,
     "placeholders": [],
     "type": {
-     "under13": 0.45,
+     "under13": 0.5,
      "tiny": 2,
      "tinySamples": [
       "v1.0 10px",
@@ -1218,9 +1286,9 @@
     "title": {
      "text": "Compliance Dashboard",
      "size": 30,
-     "top": 100
+     "top": 104
     },
-    "colourShare": 0.019
+    "colourShare": 0.018
    },
    "consoleErrors": []
   },
@@ -1230,7 +1298,7 @@
    "load": "load",
    "screens": 5,
    "filled": [
-    0.99,
+    0.98,
     1,
     1,
     1,
@@ -1250,7 +1318,7 @@
      "h": 844
     },
     "page": {
-     "height": 4068,
+     "height": 4076,
      "screens": 4.8,
      "words": 357,
      "img": 0,
@@ -1260,11 +1328,11 @@
      "sections": 0,
      "horizontalOverflow": 0,
      "overflowCulprits": [],
-     "uiFragments": 16,
-     "uiAbuse": true,
+     "uiFragments": 0,
+     "uiAbuse": false,
      "realPictures": 0,
      "videoCount": 0,
-     "uiPictures": 9,
+     "uiPictures": 0,
      "pictureSamples": [],
      "blendText": 0,
      "sideScrollers": 0,
@@ -1283,7 +1351,7 @@
      "weight": 800,
      "tracking": -0.02,
      "leading": 1.33,
-     "top": 92,
+     "top": 96,
      "tag": "h1",
      "kind": "heading",
      "align": "left",
@@ -1306,15 +1374,15 @@
       "vw": 6.2,
       "font": "Manrope",
       "weight": 800,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.33,
       "upper": false,
       "italic": false,
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.94,
-      "top": 92,
+      "widthRatio": 0.92,
+      "top": 96,
       "tag": "h1",
       "kind": "heading"
      },
@@ -1327,7 +1395,7 @@
       "vw": 6.2,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.33,
       "upper": false,
       "italic": false,
@@ -1335,7 +1403,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.04,
-      "top": 293,
+      "top": 297,
       "tag": "h4",
       "kind": "heading"
      },
@@ -1348,7 +1416,7 @@
       "vw": 6.2,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.33,
       "upper": false,
       "italic": false,
@@ -1356,7 +1424,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.07,
-      "top": 427,
+      "top": 431,
       "tag": "h4",
       "kind": "heading"
      },
@@ -1369,7 +1437,7 @@
       "vw": 6.2,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.33,
       "upper": false,
       "italic": false,
@@ -1377,7 +1445,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.04,
-      "top": 561,
+      "top": 565,
       "tag": "h4",
       "kind": "heading"
      },
@@ -1390,7 +1458,7 @@
       "vw": 6.2,
       "font": "Manrope",
       "weight": 600,
-      "tracking": -0.02,
+      "tracking": -0.025,
       "leading": 1.33,
       "upper": false,
       "italic": false,
@@ -1398,7 +1466,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.07,
-      "top": 695,
+      "top": 699,
       "tag": "h4",
       "kind": "heading"
      },
@@ -1418,8 +1486,8 @@
       "mono": false,
       "align": "left",
       "position": "left",
-      "widthRatio": 0.32,
-      "top": 1019,
+      "widthRatio": 0.31,
+      "top": 1023,
       "tag": "p",
       "kind": "statement"
      },
@@ -1439,8 +1507,8 @@
       "mono": false,
       "align": "left",
       "position": "right",
-      "widthRatio": 0.32,
-      "top": 1019,
+      "widthRatio": 0.31,
+      "top": 1023,
       "tag": "p",
       "kind": "statement"
      },
@@ -1460,8 +1528,8 @@
       "mono": false,
       "align": "left",
       "position": "left",
-      "widthRatio": 0.32,
-      "top": 1121,
+      "widthRatio": 0.31,
+      "top": 1125,
       "tag": "p",
       "kind": "statement"
      },
@@ -1481,8 +1549,8 @@
       "mono": false,
       "align": "left",
       "position": "right",
-      "widthRatio": 0.32,
-      "top": 1121,
+      "widthRatio": 0.31,
+      "top": 1125,
       "tag": "p",
       "kind": "statement"
      }
@@ -1511,21 +1579,24 @@
      ],
      "familyCount": 2,
      "sizes": [
+      10,
+      11,
+      12,
       14,
       16,
       24
      ],
-     "sizeCount": 3,
+     "sizeCount": 6,
      "notLoaded": [],
      "body": {
-      "font": "Inter",
-      "size": 14,
-      "leading": 1.43,
-      "weight": 400,
-      "tracking": 0,
-      "contrast": 4.6
+      "font": "Manrope",
+      "size": 16,
+      "leading": 1.38,
+      "weight": 700,
+      "tracking": -0.02,
+      "contrast": 17.8
      },
-     "measureChars": 52,
+     "measureChars": 34,
      "max": {
       "size": 24,
       "vw": 6.2,
@@ -1541,9 +1612,90 @@
      "microSamples": [],
      "upperShare": 0.01,
      "centerShare": 0.05,
-     "smallText": 0
+     "smallText": 45
     },
-    "eyebrows": [],
+    "eyebrows": [
+     {
+      "text": "Total Policies",
+      "above": "6",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 273
+     },
+     {
+      "text": "Extracted Rules",
+      "above": "13",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 407
+     },
+     {
+      "text": "Activity Logs",
+      "above": "6",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 541
+     },
+     {
+      "text": "Policy Violations",
+      "above": "15",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 675
+     },
+     {
+      "text": "Open alerts",
+      "above": "15",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1001
+     },
+     {
+      "text": "Critical risks",
+      "above": "8",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1001
+     },
+     {
+      "text": "High priority",
+      "above": "0",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1103
+     },
+     {
+      "text": "Needs review",
+      "above": "0",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1103
+     }
+    ],
     "numbered": [],
     "color": {
      "bodyBg": "#f8fafc",
@@ -1576,7 +1728,7 @@
      "textColors": [
       {
        "color": "#0f172b",
-       "share": 0.41
+       "share": 0.37
       },
       {
        "color": "#45556c",
@@ -1588,7 +1740,7 @@
       },
       {
        "color": "#314158",
-       "share": 0.05
+       "share": 0.07
       },
       {
        "color": "#9f0712",
@@ -1602,18 +1754,9 @@
        "s": 0,
        "l": 1
       },
-      "fg": "#1d293d"
+      "fg": "#ffffff"
      },
-     "lowContrast": [
-      {
-       "text": "Dashboard",
-       "ratio": 3.4,
-       "need": 4.5,
-       "size": 14,
-       "fg": "#0f172b",
-       "bg": "#155dfc"
-      }
-     ]
+     "lowContrast": []
     },
     "buttons": {
      "count": 17,
@@ -1640,9 +1783,15 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 0,
-     "hairlineSamples": [],
-     "outlinedBoxes": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "div.mt-5.grid 274px",
+      "div.mt-5.grid 274px",
+      "div.mt-5.grid 274px",
+      "div.mt-5.grid 274px",
+      "div.mt-5.grid 274px"
+     ],
+     "outlinedBoxes": 21,
      "dashed": 0,
      "blurred": 0,
      "roundedBoxes": 21,
@@ -1656,13 +1805,13 @@
        "count": 4,
        "iconTopped": false,
        "rounded": true,
-       "top": 976
+       "top": 980
       },
       {
        "count": 6,
        "iconTopped": true,
        "rounded": true,
-       "top": 1192
+       "top": 1196
       }
      ]
     },
@@ -1684,16 +1833,16 @@
      "w": 390,
      "h": 844
     },
-    "pageH": 4068,
+    "pageH": 4076,
     "margins": {
-     "left": 12,
-     "right": 33
+     "left": 16,
+     "right": 37
     },
     "sections": [
      {
       "sel": "div.flex.flex-col",
       "tag": "div",
-      "top": 92,
+      "top": 96,
       "height": 124,
       "words": 16,
       "media": 0,
@@ -1703,10 +1852,10 @@
        "size": 24,
        "tag": "h1"
       },
-      "left": 12,
-      "right": 12,
-      "textLeft": 12,
-      "textRight": 12,
+      "left": 16,
+      "right": 37,
+      "textLeft": 16,
+      "textRight": 37,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -1716,7 +1865,7 @@
      {
       "sel": "div.grid.gap-4",
       "tag": "div",
-      "top": 248,
+      "top": 252,
       "height": 520,
       "words": 22,
       "media": 0,
@@ -1726,10 +1875,10 @@
        "size": 24,
        "tag": "h4"
       },
-      "left": 33,
-      "right": 193,
-      "textLeft": 33,
-      "textRight": 193,
+      "left": 37,
+      "right": 189,
+      "textLeft": 37,
+      "textRight": 189,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -1739,7 +1888,7 @@
      {
       "sel": "div.p-5.pb-3",
       "tag": "div",
-      "top": 801,
+      "top": 805,
       "height": 167,
       "words": 23,
       "media": 0,
@@ -1749,10 +1898,10 @@
        "size": 16,
        "tag": "h3"
       },
-      "left": 33,
-      "right": 57,
-      "textLeft": 33,
-      "textRight": 57,
+      "left": 37,
+      "right": 53,
+      "textLeft": 37,
+      "textRight": 53,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -1762,19 +1911,19 @@
      {
       "sel": "div.grid.grid-cols-2",
       "tag": "div",
-      "top": 976,
+      "top": 980,
       "height": 192,
       "words": 9,
       "media": 0,
-      "middle": 97,
+      "middle": 93,
       "heading": {
        "text": "15",
        "size": 24,
        "tag": "p"
       },
-      "left": 48,
+      "left": 52,
       "right": 96,
-      "textLeft": 48,
+      "textLeft": 52,
       "textRight": 96,
       "fullBleed": false,
       "footer": false,
@@ -1785,7 +1934,7 @@
      {
       "sel": "div.grid.gap-4",
       "tag": "div",
-      "top": 1192,
+      "top": 1196,
       "height": 1898,
       "words": 222,
       "media": 0,
@@ -1795,10 +1944,10 @@
        "size": 16,
        "tag": "h4"
       },
-      "left": 54,
-      "right": 54,
-      "textLeft": 54,
-      "textRight": 54,
+      "left": 58,
+      "right": 58,
+      "textLeft": 58,
+      "textRight": 58,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -1808,7 +1957,7 @@
      {
       "sel": "div.grid.gap-6",
       "tag": "div",
-      "top": 3143,
+      "top": 3147,
       "height": 913,
       "words": 67,
       "media": 0,
@@ -1818,10 +1967,10 @@
        "size": 16,
        "tag": "h3"
       },
-      "left": 33,
-      "right": 33,
-      "textLeft": 33,
-      "textRight": 33,
+      "left": 37,
+      "right": 37,
+      "textLeft": 37,
+      "textRight": 37,
       "fullBleed": false,
       "footer": true,
       "hero": false,
@@ -1834,29 +1983,22 @@
      {
       "text": "Compliance Dashboard",
       "size": 24,
-      "top": 92,
+      "top": 96,
       "firstScreen": true
      }
     ],
-    "edgeText": [
-     {
-      "text": "Compliance Dashboard",
-      "side": "left",
-      "px": 12
-     },
-     {
-      "text": "Real-time policy ingestion metrics, audit readines",
-      "side": "left",
-      "px": 12
-     }
-    ],
+    "edgeText": [],
     "edges": [
      {
-      "x": 12,
+      "x": 37,
+      "n": 3
+     },
+     {
+      "x": 16,
       "n": 2
      }
     ],
-    "leftBlocks": 2,
+    "leftBlocks": 5,
     "bodySize": 16,
     "stage": false,
     "explains": false,
@@ -1874,8 +2016,8 @@
     "sidebar": null,
     "topbar": null,
     "canvas": {
-     "left": 25,
-     "right": 33
+     "left": 29,
+     "right": 37
     },
     "hero": {
      "text": "Compliance Dashboard",
@@ -1888,7 +2030,7 @@
      "weight": 800,
      "tracking": -0.02,
      "leading": 1.33,
-     "top": 92,
+     "top": 96,
      "tag": "h1",
      "kind": "heading",
      "align": "left",
@@ -1928,27 +2070,12 @@
      "glass": 0
     },
     "chips": {
-     "count": 6,
+     "count": 1,
      "hues": 1,
      "samples": [
       {
        "hue": 221,
        "size": 28,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
-       "radius": "8px"
-      },
-      {
-       "hue": 214,
-       "size": 32,
        "radius": "8px"
       }
      ]
@@ -1964,7 +2091,7 @@
     "chartHues": 0,
     "placeholders": [],
     "type": {
-     "under13": 0.53,
+     "under13": 0.57,
      "tiny": 2,
      "tinySamples": [
       "v1.0 10px",
@@ -1982,9 +2109,9 @@
     "title": {
      "text": "Compliance Dashboard",
      "size": 24,
-     "top": 92
+     "top": 96
     },
-    "colourShare": 0.015
+    "colourShare": 0.013
    },
    "consoleErrors": []
   }
@@ -1992,46 +2119,14 @@
  "findings": [
   {
    "level": "WARN",
-   "id": "contrast",
-   "width": 1440,
-   "message": "Low-contrast text: \"Dashboard\" 3.4:1 needs 4.5:1",
-   "fix": "Darken or lighten the text colour.",
-   "alsoAt": [
-    768,
-    390
-   ]
-  },
-  {
-   "level": "WARN",
-   "id": "icon-chips",
-   "width": 1440,
-   "message": "6 icons sit in tinted squares or circles.",
-   "fix": "This is the commonest tell of a generated dashboard. Drop the tinted square: a KPI is a label and a number; an icon, if it helps, is plain and in the text colour.",
-   "alsoAt": [
-    768,
-    390
-   ]
-  },
-  {
-   "level": "FAIL",
-   "id": "ui-wrapper",
-   "width": 390,
-   "message": "A data-ui element wraps a heading or more than a screen and a half of the page.",
-   "fix": "data-ui marks a cropped interface fragment only. Remove it from page-level wrappers."
-  },
-  {
-   "level": "WARN",
-   "id": "edge-text",
-   "width": 390,
-   "message": "2 text block(s) sit 12–15px from the phone's edge: \"Compliance Dashboard\" (12px); \"Real-time policy ingestion met\" (12px)",
-   "fix": "The page margin is 16–20px on a phone; the header and the corner labels sit on it too."
-  },
-  {
-   "level": "WARN",
    "id": "tiny-text",
-   "width": 390,
-   "message": "53% of the text is under 13px.",
-   "fix": "Data and labels read at 13–14px; keep 11–12px for sublines and axis ticks."
+   "width": 1440,
+   "message": "50% of the text is under 13px.",
+   "fix": "Data and labels read at 13–14px; keep 11–12px for sublines and axis ticks.",
+   "alsoAt": [
+    768,
+    390
+   ]
   }
  ],
  "images": [

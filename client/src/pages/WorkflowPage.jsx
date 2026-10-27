@@ -104,10 +104,10 @@ export default function WorkflowPage() {
               className="p-5 rounded-2xl border border-slate-200 bg-white relative overflow-hidden"
             >
               <div className="flex items-center justify-between mb-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
+                <div className="text-slate-600 shrink-0">
                   <Icon className="w-5 h-5" />
                 </div>
-                <span className="text-xs font-medium text-slate-400">Step {phase.step}</span>
+                <span className="text-xs font-medium text-slate-600">Step {phase.step}</span>
               </div>
               <h4 className="font-headline font-bold text-base text-slate-900 leading-snug">
                 {phase.title}
@@ -181,7 +181,7 @@ export default function WorkflowPage() {
                 <span className="text-xs font-medium text-slate-600 mb-2">
                   System health score
                 </span>
-                <span className="font-headline text-5xl font-extrabold text-emerald-700 tracking-tight tabular-nums">
+                <span className="font-headline text-3xl sm:text-4xl font-extrabold text-emerald-700 tracking-tight tabular-nums">
                   {health}
                 </span>
                 <p className="mt-2 text-xs text-slate-500">

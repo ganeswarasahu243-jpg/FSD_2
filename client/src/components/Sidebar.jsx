@@ -90,8 +90,12 @@ export default function Sidebar({ mobileOpen = false, onCloseMobile = () => {} }
                   }`
                 }
               >
-                <Icon className="w-4 h-4 shrink-0" />
-                <span>{item.label}</span>
+                {({ isActive }) => (
+                  <>
+                    <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-slate-500'}`} />
+                    <span className={isActive ? 'text-white font-semibold' : 'text-slate-700'}>{item.label}</span>
+                  </>
+                )}
               </NavLink>
             );
           })}
@@ -154,13 +158,13 @@ export default function Sidebar({ mobileOpen = false, onCloseMobile = () => {} }
       )}
 
       {/* Mobile Slide-over Drawer */}
-      <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 p-3 lg:hidden transition-transform duration-200 ease-out ${
-          mobileOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        {content}
-      </div>
+      {mobileOpen && (
+        <div
+          className="fixed inset-y-0 left-0 z-50 w-64 p-3 lg:hidden"
+        >
+          {content}
+        </div>
+      )}
     </>
   );
 }

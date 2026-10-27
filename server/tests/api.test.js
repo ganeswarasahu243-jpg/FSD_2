@@ -1,5 +1,6 @@
 const http = require('http');
 const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 const fs = require('fs');
 const mongoose = require('mongoose');
 const app = require('../app');
@@ -50,6 +51,11 @@ const runTests = async () => {
   console.log('\n=========================================');
   console.log(' STARTING BACKEND API TEST SUITE');
   console.log('=========================================\n');
+
+  if (process.env.MONGODB_URI && (process.env.MONGODB_URI.includes('<URL_ENCODED_PASSWORD>') || process.env.MONGODB_URI.includes('<db_password>'))) {
+    console.warn('[Test Suite] MONGODB_URI in .env contains unconfigured password placeholder. Falling back to local MongoDB for integration testing.');
+    process.env.MONGODB_URI = 'mongodb://127.0.0.1:27017/sentinel_compliance';
+  }
 
   await connectDB();
   server = app.listen(port);
