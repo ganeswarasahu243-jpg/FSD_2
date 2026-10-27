@@ -1,0 +1,3 @@
+[submodule "svp"]
+	path = svp
+	url = https://github.com/srinuxer/svp.git
