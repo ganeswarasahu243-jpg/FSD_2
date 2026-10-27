@@ -1,0 +1,1623 @@
+{
+ "url": "http://localhost:5000/login",
+ "at": "2026-10-27T04:30:42.891Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    1
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 900,
+     "screens": 1,
+     "words": 75,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 0,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Welcome Back",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 24,
+     "vw": 1.7,
+     "font": "Manrope",
+     "weight": 900,
+     "tracking": -0.02,
+     "leading": 1.33,
+     "top": 189,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Welcome Back",
+     "words": 2,
+     "lines": 1,
+     "size": 24,
+     "font": "Manrope"
+    },
+    "headings": [
+     {
+      "text": "Turn Dense Regulations Into Machine-Readable Enforcement",
+      "words": 6,
+      "chars": 56,
+      "lines": 3,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.29,
+      "top": 319,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.75,
+       "mono": false
+      },
+      {
+       "family": "Manrope",
+       "share": 0.14,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      24,
+      36
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 59,
+     "max": {
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope",
+      "text": "Turn Dense Regulations Into Machine-Read"
+     },
+     "monoShare": 0.1,
+     "monoProseShare": 0.1,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "User: jayasurya",
+      "Pass: 123456",
+      "User: demo.employee",
+      "Pass: demo1234"
+     ],
+     "microLabels": 2,
+     "microLabelShare": 0.087,
+     "microSamples": [
+      "Verified Testing Credentials",
+      "Quick-Fill Test Logins"
+     ],
+     "upperShare": 0.16,
+     "centerShare": 0.25,
+     "smallText": 12
+    },
+    "eyebrows": [
+     {
+      "text": "ENTERPRISE POLICY COMPLIANCE",
+      "above": "Turn Dense Regulations Into Machine-Read",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 12,
+      "top": 277
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#020618",
+       "top": 0,
+       "hsl": {
+        "h": 229,
+        "s": 0.85,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#0f172b",
+       "top": 140,
+       "hsl": {
+        "h": 223,
+        "s": 0.48,
+        "l": 0.11
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#90a1b9",
+       "share": 0.43
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.15
+      },
+      {
+       "color": "#62748e",
+       "share": 0.1
+      },
+      {
+       "color": "#50a2ff",
+       "share": 0.07
+      },
+      {
+       "color": "#cad5e2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#155dfc",
+      "hsl": {
+       "h": 221,
+       "s": 0.97,
+       "l": 0.54
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Quick-Fill Test Logins",
+       "ratio": 2.6,
+       "need": 4.5,
+       "size": 11,
+       "fg": "#90a1b9",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Protected by Enterprise JWT Authenticati",
+       "ratio": 2.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#90a1b9",
+       "bg": "#ffffff"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 16,
+     "height": 39,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign In to Workspace",
+      "Admin (jayasurya)",
+      "Employee (demo)"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.w-full.max-w-5xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.lg:w-1/2.p-8 → linear-gradient(to right bottom, oklch(0.282 0.091 267.935) 0%, oklch(0.208 0.042 265.755) 50%, oklch(0.129 0."
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "div.lg:w-1/2.p-8 511px",
+      "div.flex.items-center 415px",
+      "div.mt-8.pt-4 415px"
+     ],
+     "outlinedBoxes": 2,
+     "dashed": 2,
+     "blurred": 1,
+     "roundedBoxes": 2,
+     "boxRadius": 24,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": null,
+    "fontsLoaded": [
+     "inter",
+     "manrope"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 900,
+    "margins": {
+     "left": 257,
+     "right": 257
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Welcome Back",
+      "size": 24,
+      "top": 189,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 257,
+      "n": 2
+     },
+     {
+      "x": 768,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 3,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.2,
+    "voidBox": {
+     "x": 0,
+     "y": 720,
+     "w": 1440,
+     "h": 180
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 257,
+     "right": 257
+    },
+    "hero": {
+     "text": "Welcome Back",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 24,
+     "vw": 1.7,
+     "font": "Manrope",
+     "weight": 900,
+     "tracking": -0.02,
+     "leading": 1.33,
+     "top": 189,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 1,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 5,
+     "radii": [
+      [
+       16,
+       2
+      ],
+      [
+       24,
+       1
+      ],
+      [
+       20,
+       1
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 1,
+     "borderSamples": [
+      "#ffffff on #0f172b (17.83:1)"
+     ],
+     "heavyShadows": 0,
+     "softShadows": 1,
+     "shadowSamples": [],
+     "glass": 1
+    },
+    "chips": {
+     "count": 1,
+     "hues": 1,
+     "samples": [
+      {
+       "hue": 221,
+       "size": 40,
+       "radius": "16px"
+      }
+     ]
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.53,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      24,
+      36
+     ]
+    },
+    "title": {
+     "text": "Welcome Back",
+     "size": 24,
+     "top": 189
+    },
+    "colourShare": 0.035
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1191,
+     "screens": 1.2,
+     "words": 75,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 0,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Welcome Back",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 24,
+     "vw": 3.1,
+     "font": "Manrope",
+     "weight": 900,
+     "tracking": -0.02,
+     "leading": 1.33,
+     "top": 633,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Welcome Back",
+     "words": 2,
+     "lines": 1,
+     "size": 24,
+     "font": "Manrope"
+    },
+    "headings": [
+     {
+      "text": "Turn Dense Regulations Into Machine-Readable Enforcement",
+      "words": 6,
+      "chars": 56,
+      "lines": 2,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 211,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.75,
+       "mono": false
+      },
+      {
+       "family": "Manrope",
+       "share": 0.14,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      24,
+      36
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 87,
+     "max": {
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope",
+      "text": "Turn Dense Regulations Into Machine-Read"
+     },
+     "monoShare": 0.1,
+     "monoProseShare": 0.1,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "User: jayasurya",
+      "Pass: 123456",
+      "User: demo.employee",
+      "Pass: demo1234"
+     ],
+     "microLabels": 2,
+     "microLabelShare": 0.087,
+     "microSamples": [
+      "Verified Testing Credentials",
+      "Quick-Fill Test Logins"
+     ],
+     "upperShare": 0.16,
+     "centerShare": 0.25,
+     "smallText": 12
+    },
+    "eyebrows": [
+     {
+      "text": "ENTERPRISE POLICY COMPLIANCE",
+      "above": "Turn Dense Regulations Into Machine-Read",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 12,
+      "top": 169
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#020618",
+       "top": 0,
+       "hsl": {
+        "h": 229,
+        "s": 0.85,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#0f172b",
+       "top": 32,
+       "hsl": {
+        "h": 223,
+        "s": 0.48,
+        "l": 0.11
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 585,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#90a1b9",
+       "share": 0.43
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.15
+      },
+      {
+       "color": "#62748e",
+       "share": 0.1
+      },
+      {
+       "color": "#50a2ff",
+       "share": 0.07
+      },
+      {
+       "color": "#cad5e2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#155dfc",
+      "hsl": {
+       "h": 221,
+       "s": 0.97,
+       "l": 0.54
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Quick-Fill Test Logins",
+       "ratio": 2.6,
+       "need": 4.5,
+       "size": 11,
+       "fg": "#90a1b9",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Protected by Enterprise JWT Authenticati",
+       "ratio": 2.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#90a1b9",
+       "bg": "#ffffff"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 16,
+     "height": 39,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign In to Workspace",
+      "Admin (jayasurya)",
+      "Employee (demo)"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.w-full.max-w-5xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.lg:w-1/2.p-8 → linear-gradient(to right bottom, oklch(0.282 0.091 267.935) 0%, oklch(0.208 0.042 265.755) 50%, oklch(0.129 0."
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "div.lg:w-1/2.p-8 702px",
+      "div.flex.items-center 606px",
+      "div.mt-8.pt-4 606px"
+     ],
+     "outlinedBoxes": 2,
+     "dashed": 2,
+     "blurred": 1,
+     "roundedBoxes": 2,
+     "boxRadius": 24,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": null,
+    "fontsLoaded": [
+     "inter",
+     "manrope"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1191,
+    "margins": {
+     "left": 81,
+     "right": 81
+    },
+    "sections": [
+     {
+      "sel": "div.lg:w-1/2.p-8",
+      "tag": "div",
+      "top": 33,
+      "height": 552,
+      "words": 45,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Turn Dense Regulations Into Machine-Readable Enfor",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 81,
+      "right": 87,
+      "textLeft": 81,
+      "textRight": 87,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.lg:w-1/2.p-8",
+      "tag": "div",
+      "top": 585,
+      "height": 573,
+      "words": 35,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Welcome Back",
+       "size": 24,
+       "tag": "h1"
+      },
+      "left": 81,
+      "right": 81,
+      "textLeft": 81,
+      "textRight": 81,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Welcome Back",
+      "size": 24,
+      "top": 633,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 81,
+      "n": 3
+     }
+    ],
+    "leftBlocks": 3,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 81,
+     "right": 81
+    },
+    "hero": {
+     "text": "Welcome Back",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 24,
+     "vw": 3.1,
+     "font": "Manrope",
+     "weight": 900,
+     "tracking": -0.02,
+     "leading": 1.33,
+     "top": 633,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 1,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 5,
+     "radii": [
+      [
+       16,
+       2
+      ],
+      [
+       24,
+       1
+      ],
+      [
+       20,
+       1
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 1,
+     "borderSamples": [
+      "#ffffff on #0f172b (17.83:1)"
+     ],
+     "heavyShadows": 0,
+     "softShadows": 1,
+     "shadowSamples": [],
+     "glass": 1
+    },
+    "chips": {
+     "count": 1,
+     "hues": 1,
+     "samples": [
+      {
+       "hue": 221,
+       "size": 40,
+       "radius": "16px"
+      }
+     ]
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.53,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      24,
+      36
+     ]
+    },
+    "title": {
+     "text": "Welcome Back",
+     "size": 24,
+     "top": 633
+    },
+    "colourShare": 0.073
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    1,
+    0.99
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 1284,
+     "screens": 1.5,
+     "words": 75,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 0,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Welcome Back",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Manrope",
+     "weight": 900,
+     "tracking": -0.02,
+     "leading": 1.33,
+     "top": 705,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Welcome Back",
+     "words": 2,
+     "lines": 1,
+     "size": 24,
+     "font": "Manrope"
+    },
+    "headings": [
+     {
+      "text": "Sentinel Core",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.53,
+      "top": 49,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Turn Dense Regulations Into Machine-Readable Enforcement",
+      "words": 6,
+      "chars": 56,
+      "lines": 4,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 179,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Welcome Back",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Manrope",
+      "weight": 900,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.58,
+      "top": 705,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 3,
+     "maxLines": 4,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.75,
+       "mono": false
+      },
+      {
+       "family": "Manrope",
+       "share": 0.14,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      24,
+      30
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 42,
+     "max": {
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "text": "Turn Dense Regulations Into Machine-Read"
+     },
+     "monoShare": 0.1,
+     "monoProseShare": 0.1,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "User: jayasurya",
+      "Pass: 123456",
+      "User: demo.employee",
+      "Pass: demo1234"
+     ],
+     "microLabels": 2,
+     "microLabelShare": 0.087,
+     "microSamples": [
+      "Verified Testing Credentials",
+      "Quick-Fill Test Logins"
+     ],
+     "upperShare": 0.16,
+     "centerShare": 0.25,
+     "smallText": 12
+    },
+    "eyebrows": [
+     {
+      "text": "ENTERPRISE POLICY COMPLIANCE",
+      "above": "Turn Dense Regulations Into Machine-Read",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 12,
+      "top": 137
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#020618",
+       "top": 0,
+       "hsl": {
+        "h": 229,
+        "s": 0.85,
+        "l": 0.05
+       }
+      },
+      {
+       "color": "#0f172b",
+       "top": 16,
+       "hsl": {
+        "h": 223,
+        "s": 0.48,
+        "l": 0.11
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 673,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#90a1b9",
+       "share": 0.43
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.15
+      },
+      {
+       "color": "#62748e",
+       "share": 0.1
+      },
+      {
+       "color": "#50a2ff",
+       "share": 0.07
+      },
+      {
+       "color": "#cad5e2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#155dfc",
+      "hsl": {
+       "h": 221,
+       "s": 0.97,
+       "l": 0.54
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Quick-Fill Test Logins",
+       "ratio": 2.6,
+       "need": 4.5,
+       "size": 11,
+       "fg": "#90a1b9",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Protected by Enterprise JWT Authenticati",
+       "ratio": 2.6,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#90a1b9",
+       "bg": "#ffffff"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 0,
+     "radius": 16,
+     "height": 61,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": []
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "div.w-full.max-w-5xl → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 1,
+     "scrims": 0,
+     "gradientSamples": [
+      "div.lg:w-1/2.p-8 → linear-gradient(to right bottom, oklch(0.282 0.091 267.935) 0%, oklch(0.208 0.042 265.755) 50%, oklch(0.129 0."
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "div.lg:w-1/2.p-8 356px",
+      "div.flex.items-center 292px",
+      "div.mt-8.pt-4 292px"
+     ],
+     "outlinedBoxes": 2,
+     "dashed": 2,
+     "blurred": 1,
+     "roundedBoxes": 2,
+     "boxRadius": 24,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": null,
+    "fontsLoaded": [
+     "inter",
+     "manrope"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 1284,
+    "margins": {
+     "left": 49,
+     "right": 49
+    },
+    "sections": [
+     {
+      "sel": "div.lg:w-1/2.p-8",
+      "tag": "div",
+      "top": 17,
+      "height": 656,
+      "words": 45,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Turn Dense Regulations Into Machine-Readable Enfor",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 49,
+      "right": 62,
+      "textLeft": 49,
+      "textRight": 62,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.lg:w-1/2.p-8",
+      "tag": "div",
+      "top": 673,
+      "height": 594,
+      "words": 35,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Welcome Back",
+       "size": 24,
+       "tag": "h1"
+      },
+      "left": 49,
+      "right": 49,
+      "textLeft": 49,
+      "textRight": 49,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Welcome Back",
+      "size": 24,
+      "top": 705,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 49,
+      "n": 3
+     }
+    ],
+    "leftBlocks": 3,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 49,
+     "right": 49
+    },
+    "hero": {
+     "text": "Welcome Back",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Manrope",
+     "weight": 900,
+     "tracking": -0.02,
+     "leading": 1.33,
+     "top": 705,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 1,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 3,
+     "radii": [
+      [
+       24,
+       1
+      ],
+      [
+       20,
+       1
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 1,
+     "borderSamples": [
+      "#ffffff on #0f172b (17.83:1)"
+     ],
+     "heavyShadows": 0,
+     "softShadows": 1,
+     "shadowSamples": [],
+     "glass": 1
+    },
+    "chips": {
+     "count": 1,
+     "hues": 1,
+     "samples": [
+      {
+       "hue": 221,
+       "size": 40,
+       "radius": "16px"
+      }
+     ]
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.53,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      24,
+      30
+     ]
+    },
+    "title": {
+     "text": "Welcome Back",
+     "size": 24,
+     "top": 705
+    },
+    "colourShare": 0.06
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"Turn Dense Regulations Into Machine-Readable Enf\" → 3 lines (6 words, 36px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "2 tiny uppercase letter-spaced label(s): \"Verified Testing Credentials\", \"Quick-Fill Test Logins\"",
+   "fix": "Prefer sentence case at body size.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "gradient",
+   "width": 1440,
+   "message": "1 gradient fill(s): div.lg:w-1/2.p-8 → linear-gradient(to right bottom, oklch(0.282 0.091 267.935) 0%, oklch(0.208 0.042 265.755) 50%, oklch(0.129 0.",
+   "fix": "Use a flat colour or a real image. The only gradient allowed by default is a neutral scrim over a photo for legibility.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "contrast",
+   "width": 1440,
+   "message": "Low-contrast text: \"Quick-Fill Test Logins\" 2.6:1 needs 4.5:1; \"Protected by Enterprise JWT Authenticati\" 2.6:1 needs 4.5:1",
+   "fix": "Darken or lighten the text colour.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-count",
+   "width": 1440,
+   "message": "3 typefaces in use (Inter, Manrope, ui-monospace).",
+   "fix": "Two at most.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "tiny-text",
+   "width": 1440,
+   "message": "53% of the text is under 13px.",
+   "fix": "Data and labels read at 13–14px; keep 11–12px for sublines and axis ticks.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"Turn Dense Regulations Into Machine-Readable Enf\" → 4 lines (6 words, 30px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\coding\\SVP\\.taste-skill\\before_login\\desktop-fold.jpg",
+   "pages": [
+    "C:\\coding\\SVP\\.taste-skill\\before_login\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\coding\\SVP\\.taste-skill\\before_login\\tablet-fold.jpg",
+   "pages": [
+    "C:\\coding\\SVP\\.taste-skill\\before_login\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\coding\\SVP\\.taste-skill\\before_login\\mobile-fold.jpg",
+   "pages": [
+    "C:\\coding\\SVP\\.taste-skill\\before_login\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "svp-mern-workspace",
+  "version": "1.0.0",
+  "description": "Policy Pilot / Sentinel Core MERN Stack Application",
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "migrate:data": "npm --prefix server run migrate",
+    "test": "npm --prefix server test",
+    "build": "npm --prefix client run build",
+    "build:prod": "npm run install:all && npm --prefix client run build",
+    "start": "npm --prefix server start",
+    "start:prod": "node server/server.js",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev"
+  },
+  "keywords": [
+    "mern",
+    "react",
+    "express",
+    "mongodb",
+    "nodejs",
+    "compliance",
+    "policy-intelligence"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,86 @@
+const TOKEN_KEY = 'sentinel_access_token';
+const REFRESH_KEY = 'sentinel_refresh_token';
+const USER_KEY = 'sentinel_username';
+
+const RAW_API_BASE = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) || '';
+const API_BASE_URL = RAW_API_BASE.replace(/\/+$/, '');
+
+export const getApiBaseUrl = () => API_BASE_URL;
+export const getAccessToken = () => localStorage.getItem(TOKEN_KEY);
+export const getRefreshToken = () => localStorage.getItem(REFRESH_KEY);
+export const getStoredUsername = () => localStorage.getItem(USER_KEY);
+
+export const setAuthSession = (access, refresh, username) => {
+  if (access) localStorage.setItem(TOKEN_KEY, access);
+  if (refresh) localStorage.setItem(REFRESH_KEY, refresh);
+  if (username) localStorage.setItem(USER_KEY, username);
+};
+
+export const clearAuthSession = () => {
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(REFRESH_KEY);
+  localStorage.removeItem(USER_KEY);
+};
+
+export const isAuthenticated = () => Boolean(getAccessToken());
+
+/**
+ * Universal fetch wrapper for JSON and Multipart requests
+ */
+export const apiRequest = async (endpoint, options = {}) => {
+  const token = getAccessToken();
+  const headers = { ...options.headers };
+
+  if (token && !headers.Authorization) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  // If body is plain object, JSON serialize
+  let body = options.body;
+  if (body && typeof body === 'object' && !(body instanceof FormData)) {
+    headers['Content-Type'] = 'application/json';
+    body = JSON.stringify(body);
+  }
+
+  const targetUrl = endpoint.startsWith('http://') || endpoint.startsWith('https://')
+    ? endpoint
+    : `${API_BASE_URL}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
+
+  const response = await fetch(targetUrl, {
+    ...options,
+    headers,
+    body,
+  });
+
+  // Handle 401 unauthorized (expired or invalid token)
+  if (response.status === 401 && !endpoint.includes('/api/auth/login')) {
+    clearAuthSession();
+    if (typeof window !== 'undefined' && !window.location.pathname.startsWith('/login')) {
+      window.location.href = '/login';
+    }
+  }
+
+  const text = await response.text();
+  let data = null;
+  try {
+    data = JSON.parse(text);
+  } catch (_) {
+    throw new Error(
+      text.trim().startsWith('<')
+        ? `Server returned HTML (${response.status}). Verify API server is running.`
+        : text.trim() || 'Invalid response from server.'
+    );
+  }
+
+  if (!response.ok) {
+    const errorDetail =
+      data.detail ||
+      data.message ||
+      data.error ||
+      (Array.isArray(Object.values(data)[0]) ? Object.values(data)[0][0] : null) ||
+      'Request failed.';
+    throw new Error(errorDetail);
+  }
+
+  return data;
+};

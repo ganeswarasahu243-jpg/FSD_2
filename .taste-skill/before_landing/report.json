@@ -1,0 +1,2619 @@
+{
+ "url": "http://localhost:5000/",
+ "at": "2026-10-27T04:29:15.748Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 1,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3041,
+     "screens": 3.4,
+     "words": 241,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 11,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "chars": 52,
+     "lines": 2,
+     "size": 72,
+     "vw": 5,
+     "font": "Manrope",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 1.12,
+     "top": 227,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "lines": 2,
+     "size": 72,
+     "font": "Manrope"
+    },
+    "headings": [
+     {
+      "text": "Turn Dense Regulations Into Active Security Controls",
+      "words": 7,
+      "chars": 52,
+      "lines": 2,
+      "size": 72,
+      "vw": 5,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.71,
+      "top": 227,
+      "gradientText": true,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "99.8%",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.13,
+      "top": 711,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "10x",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.13,
+      "top": 711,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "500+",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.13,
+      "top": 711,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "0ms",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.13,
+      "top": 711,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Architected for Regulated Enterprise Environments",
+      "words": 5,
+      "chars": 49,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.53,
+      "top": 1029,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Supported Regulatory Frameworks",
+      "words": 3,
+      "chars": 31,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.34,
+      "top": 1734,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Connect with Compliance Engineers",
+      "words": 4,
+      "chars": 33,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.47,
+      "top": 2254,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 3,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Manrope",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      12,
+      14,
+      16,
+      20,
+      24,
+      30,
+      36,
+      72
+     ],
+     "sizeCount": 9,
+     "notLoaded": [
+      "Inter"
+     ],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.2
+     },
+     "measureChars": 77,
+     "max": {
+      "size": 72,
+      "vw": 5,
+      "font": "Manrope",
+      "text": "Turn Dense Regulations Into"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 2,
+     "microLabelShare": 0.012,
+     "microSamples": [
+      "Capabilities",
+      "Compliance"
+     ],
+     "upperShare": 0.09,
+     "centerShare": 0.34,
+     "smallText": 12
+    },
+    "eyebrows": [
+     {
+      "text": "ENTERPRISE COMPLIANCE & POLICY INTELLIGENCE",
+      "above": "Turn Dense Regulations Into Active Secur",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 12,
+      "top": 165
+     },
+     {
+      "text": "Capabilities",
+      "above": "Architected for Regulated Enterprise Env",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1001
+     },
+     {
+      "text": "Compliance",
+      "above": "Supported Regulatory Frameworks",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1708
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f8fafc",
+       "top": 0,
+       "hsl": {
+        "h": 210,
+        "s": 0.4,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 882,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#45556c",
+       "share": 0.56
+      },
+      {
+       "color": "#0f172b",
+       "share": 0.15
+      },
+      {
+       "color": "#62748e",
+       "share": 0.09
+      },
+      {
+       "color": "#009966",
+       "share": 0.04
+      },
+      {
+       "color": "#90a1b9",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#155dfc",
+      "hsl": {
+       "h": 221,
+       "s": 0.97,
+       "l": 0.54
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "© 2026 Policy Intelligence Platform",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#62748e",
+       "bg": "#0f172b"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 3,
+     "radius": 16,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Open Workspace",
+      "Launch Workspace",
+      "Try Policy Interpreter"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 12,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 1,
+     "hairlines": 8,
+     "hairlineSamples": [
+      "nav.sticky.top-0 1440px",
+      "section#features.py-20.md:py-28 1440px",
+      "section#frameworks.py-20.md:py-28 1440px",
+      "div.pt-4.border-t 318px",
+      "div.pt-4.border-t 318px"
+     ],
+     "outlinedBoxes": 11,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 12,
+     "boxRadius": 20,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 686
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 1235
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 1818
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 7,
+     "fixed": true,
+     "height": 69,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 3041,
+    "margins": {
+     "left": 113,
+     "right": 80
+    },
+    "sections": [
+     {
+      "sel": "header.relative.pt-16",
+      "tag": "header",
+      "top": 69,
+      "height": 813,
+      "words": 60,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Turn Dense Regulations Into",
+       "size": 72,
+       "tag": "h1"
+      },
+      "left": 233,
+      "right": 240,
+      "textLeft": 233,
+      "textRight": 240,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.py-20.md:py-28",
+      "tag": "section",
+      "top": 882,
+      "height": 707,
+      "words": 93,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Architected for Regulated Enterprise Environments",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 113,
+      "right": 134,
+      "textLeft": 113,
+      "textRight": 134,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#frameworks.py-20.md:py-28",
+      "tag": "section",
+      "top": 1589,
+      "height": 552,
+      "words": 61,
+      "media": 0,
+      "middle": 77,
+      "heading": {
+       "text": "Supported Regulatory Frameworks",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 144,
+      "right": 144,
+      "textLeft": 144,
+      "textRight": 144,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.py-20.md:py-28",
+      "tag": "section",
+      "top": 2141,
+      "height": 771,
+      "words": 26,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Connect with Compliance Engineers",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 417,
+      "right": 417,
+      "textLeft": 417,
+      "textRight": 418,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.py-12.bg-slate-900",
+      "tag": "footer",
+      "top": 2912,
+      "height": 129,
+      "words": 15,
+      "media": 0,
+      "middle": 384,
+      "heading": null,
+      "left": 124,
+      "right": 80,
+      "textLeft": 124,
+      "textRight": 80,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Turn Dense Regulations Into Active Security Controls",
+      "size": 72,
+      "top": 227,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 113,
+      "n": 2
+     },
+     {
+      "x": 169,
+      "n": 2
+     },
+     {
+      "x": 550,
+      "n": 2
+     },
+     {
+      "x": 561,
+      "n": 2
+     },
+     {
+      "x": 953,
+      "n": 2
+     },
+     {
+      "x": 988,
+      "n": 2
+     },
+     {
+      "x": 144,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 13,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.14,
+    "voidBox": {
+     "x": 1200,
+     "y": 120,
+     "w": 240,
+     "h": 780
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 69
+    },
+    "canvas": {
+     "left": 90,
+     "right": 80
+    },
+    "hero": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "chars": 52,
+     "lines": 2,
+     "size": 72,
+     "vw": 5,
+     "font": "Manrope",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 1.12,
+     "top": 227,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 11,
+     "firstScreen": 4,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 11,
+     "radii": [
+      [
+       20,
+       7
+      ],
+      [
+       24,
+       4
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 7,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 5,
+     "hues": 3,
+     "samples": [
+      {
+       "hue": 221,
+       "size": 40,
+       "radius": "16px"
+      },
+      {
+       "hue": 214,
+       "size": 48,
+       "radius": "20px"
+      },
+      {
+       "hue": 48,
+       "size": 48,
+       "radius": "20px"
+      },
+      {
+       "hue": 150,
+       "size": 48,
+       "radius": "20px"
+      }
+     ]
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 3,
+     "tabularShare": 0,
+     "kpiMax": 36
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.17,
+     "tiny": 1,
+     "tinySamples": [
+      "Compliance AI 10px"
+     ],
+     "sizes": [
+      10,
+      12,
+      14,
+      16,
+      20,
+      24,
+      30,
+      36,
+      72
+     ]
+    },
+    "title": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "size": 72,
+     "top": 227
+    },
+    "colourShare": 0.032
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 1,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3419,
+     "screens": 3.3,
+     "words": 241,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 11,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "chars": 52,
+     "lines": 3,
+     "size": 60,
+     "vw": 7.8,
+     "font": "Manrope",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 1.12,
+     "top": 267,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "lines": 3,
+     "size": 60,
+     "font": "Manrope"
+    },
+    "headings": [
+     {
+      "text": "Turn Dense Regulations Into Active Security Controls",
+      "words": 7,
+      "chars": 52,
+      "lines": 3,
+      "size": 60,
+      "vw": 7.8,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 267,
+      "gradientText": true,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "99.8%",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.15,
+      "top": 791,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "10x",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.15,
+      "top": 791,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "500+",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.15,
+      "top": 791,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "0ms",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.15,
+      "top": 791,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Architected for Regulated Enterprise Environments",
+      "words": 5,
+      "chars": 49,
+      "lines": 2,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1149,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Supported Regulatory Frameworks",
+      "words": 3,
+      "chars": 31,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.64,
+      "top": 2001,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Connect with Compliance Engineers",
+      "words": 4,
+      "chars": 33,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 2609,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 4,
+     "centered": 3,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Manrope",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      12,
+      14,
+      16,
+      20,
+      24,
+      30,
+      36,
+      60
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.2
+     },
+     "measureChars": 70,
+     "max": {
+      "size": 60,
+      "vw": 7.8,
+      "font": "Manrope",
+      "text": "Turn Dense Regulations Into"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 2,
+     "microLabelShare": 0.012,
+     "microSamples": [
+      "Capabilities",
+      "Compliance"
+     ],
+     "upperShare": 0.09,
+     "centerShare": 0.34,
+     "smallText": 12
+    },
+    "eyebrows": [
+     {
+      "text": "ENTERPRISE COMPLIANCE & POLICY INTELLIGENCE",
+      "above": "Turn Dense Regulations Into Active Secur",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 12,
+      "top": 205
+     },
+     {
+      "text": "Capabilities",
+      "above": "Architected for Regulated Enterprise Env",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1121
+     },
+     {
+      "text": "Compliance",
+      "above": "Supported Regulatory Frameworks",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1975
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f8fafc",
+       "top": 0,
+       "hsl": {
+        "h": 210,
+        "s": 0.4,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 1002,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#45556c",
+       "share": 0.56
+      },
+      {
+       "color": "#0f172b",
+       "share": 0.15
+      },
+      {
+       "color": "#62748e",
+       "share": 0.09
+      },
+      {
+       "color": "#009966",
+       "share": 0.04
+      },
+      {
+       "color": "#90a1b9",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#155dfc",
+      "hsl": {
+       "h": 221,
+       "s": 0.97,
+       "l": 0.54
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "© 2026 Policy Intelligence Platform",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#62748e",
+       "bg": "#0f172b"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 3,
+     "radius": 16,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Open Workspace",
+      "Launch Workspace",
+      "Try Policy Interpreter"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 12,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 1,
+     "hairlines": 5,
+     "hairlineSamples": [
+      "nav.sticky.top-0 768px",
+      "section#features.py-20.md:py-28 768px",
+      "section#frameworks.py-20.md:py-28 768px",
+      "section#contact.py-20.md:py-28 768px",
+      "footer.py-12.bg-slate-900 768px"
+     ],
+     "outlinedBoxes": 11,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 12,
+     "boxRadius": 20,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 766
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 1355
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 2085
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 7,
+     "fixed": true,
+     "height": 109,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "inter",
+     "manrope"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 3419,
+    "margins": {
+     "left": 32,
+     "right": 14
+    },
+    "sections": [
+     {
+      "sel": "header.relative.pt-16",
+      "tag": "header",
+      "top": 109,
+      "height": 893,
+      "words": 60,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Turn Dense Regulations Into",
+       "size": 60,
+       "tag": "h1"
+      },
+      "left": 36,
+      "right": 36,
+      "textLeft": 36,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.py-20.md:py-28",
+      "tag": "section",
+      "top": 1002,
+      "height": 854,
+      "words": 93,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Architected for Regulated Enterprise Environments",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 33,
+      "textLeft": 33,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#frameworks.py-20.md:py-28",
+      "tag": "section",
+      "top": 1856,
+      "height": 640,
+      "words": 61,
+      "media": 0,
+      "middle": 19,
+      "heading": {
+       "text": "Supported Regulatory Frameworks",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.py-20.md:py-28",
+      "tag": "section",
+      "top": 2496,
+      "height": 770,
+      "words": 26,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Connect with Compliance Engineers",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 61,
+      "right": 61,
+      "textLeft": 61,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.py-12.bg-slate-900",
+      "tag": "footer",
+      "top": 3266,
+      "height": 153,
+      "words": 15,
+      "media": 0,
+      "middle": 53,
+      "heading": null,
+      "left": 67,
+      "right": 132,
+      "textLeft": 67,
+      "textRight": 132,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Turn Dense Regulations Into Active Security Controls",
+      "size": 60,
+      "top": 267,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [
+     {
+      "text": "Open Workspace",
+      "side": "right",
+      "px": 14
+     }
+    ],
+    "edges": [
+     {
+      "x": 57,
+      "n": 4
+     },
+     {
+      "x": 300,
+      "n": 2
+     },
+     {
+      "x": 310,
+      "n": 2
+     },
+     {
+      "x": 542,
+      "n": 2
+     },
+     {
+      "x": 556,
+      "n": 2
+     },
+     {
+      "x": 32,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 13,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 32,
+     "right": 14
+    },
+    "hero": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "chars": 52,
+     "lines": 3,
+     "size": 60,
+     "vw": 7.8,
+     "font": "Manrope",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 1.12,
+     "top": 267,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 11,
+     "firstScreen": 4,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 11,
+     "radii": [
+      [
+       20,
+       7
+      ],
+      [
+       24,
+       4
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 7,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 3,
+     "hues": 3,
+     "samples": [
+      {
+       "hue": 214,
+       "size": 48,
+       "radius": "20px"
+      },
+      {
+       "hue": 48,
+       "size": 48,
+       "radius": "20px"
+      },
+      {
+       "hue": 150,
+       "size": 48,
+       "radius": "20px"
+      }
+     ]
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 3,
+     "tabularShare": 0,
+     "kpiMax": 36
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.17,
+     "tiny": 1,
+     "tinySamples": [
+      "Compliance AI 10px"
+     ],
+     "sizes": [
+      10,
+      12,
+      14,
+      16,
+      20,
+      24,
+      30,
+      36,
+      60
+     ]
+    },
+    "title": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "size": 60,
+     "top": 267
+    },
+    "colourShare": 0.04
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 1,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 4409,
+     "screens": 5.2,
+     "words": 237,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 11,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "chars": 52,
+     "lines": 4,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Manrope",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 1.12,
+     "top": 235,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "lines": 4,
+     "size": 36,
+     "font": "Manrope"
+    },
+    "headings": [
+     {
+      "text": "Turn Dense Regulations Into Active Security Controls",
+      "words": 7,
+      "chars": 52,
+      "lines": 4,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.12,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 235,
+      "gradientText": true,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "99.8%",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 787,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "10x",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 787,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "500+",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 919,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "0ms",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 919,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Architected for Regulated Enterprise Environments",
+      "words": 5,
+      "chars": 49,
+      "lines": 3,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1209,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Supported Regulatory Frameworks",
+      "words": 3,
+      "chars": 31,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2497,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "GDPR 2016/679",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Manrope",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 2710,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "SOC 2 Type II",
+      "words": 4,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Manrope",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 2945,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "HIPAA",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Manrope",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 3180,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Connect with Compliance Engineers",
+      "words": 4,
+      "chars": 33,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Manrope",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3503,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 11,
+     "maxLines": 4,
+     "over2Lines": 2,
+     "statements": 4,
+     "centered": 3,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Manrope",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      12,
+      14,
+      16,
+      20,
+      24,
+      30,
+      36
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.2
+     },
+     "measureChars": 45,
+     "max": {
+      "size": 36,
+      "vw": 9.2,
+      "font": "Manrope",
+      "text": "Turn Dense Regulations Into"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 2,
+     "microLabelShare": 0.012,
+     "microSamples": [
+      "Capabilities",
+      "Compliance"
+     ],
+     "upperShare": 0.09,
+     "centerShare": 0.35,
+     "smallText": 16
+    },
+    "eyebrows": [
+     {
+      "text": "ENTERPRISE COMPLIANCE & POLICY INTELLIGENCE",
+      "above": "Turn Dense Regulations Into Active Secur",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": true,
+      "size": 12,
+      "top": 173
+     },
+     {
+      "text": "Capabilities",
+      "above": "Architected for Regulated Enterprise Env",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1181
+     },
+     {
+      "text": "Compliance",
+      "above": "Supported Regulatory Frameworks",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 2471
+     },
+     {
+      "text": "European Union",
+      "above": "GDPR 2016/679",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 2692
+     },
+     {
+      "text": "United States",
+      "above": "SOC 2 Type II",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 2927
+     },
+     {
+      "text": "Healthcare",
+      "above": "HIPAA",
+      "upper": true,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 3162
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f8fafc",
+       "top": 0,
+       "hsl": {
+        "h": 210,
+        "s": 0.4,
+        "l": 0.98
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 1094,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#45556c",
+       "share": 0.56
+      },
+      {
+       "color": "#0f172b",
+       "share": 0.16
+      },
+      {
+       "color": "#62748e",
+       "share": 0.09
+      },
+      {
+       "color": "#009966",
+       "share": 0.04
+      },
+      {
+       "color": "#90a1b9",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#155dfc",
+      "hsl": {
+       "h": 221,
+       "s": 0.97,
+       "l": 0.54
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": [
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "Continuous Auditing Active",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#009966",
+       "bg": "#ffffff"
+      },
+      {
+       "text": "© 2026 Policy Intelligence Platform",
+       "ratio": 3.7,
+       "need": 4.5,
+       "size": 12,
+       "fg": "#62748e",
+       "bg": "#0f172b"
+      }
+     ]
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 3,
+     "radius": 16,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Open Workspace",
+      "Launch Workspace",
+      "Try Policy Interpreter"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 12,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 1,
+     "hairlines": 8,
+     "hairlineSamples": [
+      "nav.sticky.top-0 390px",
+      "section#features.py-20.md:py-28 390px",
+      "section#frameworks.py-20.md:py-28 390px",
+      "div.pt-4.border-t 308px",
+      "div.pt-4.border-t 308px"
+     ],
+     "outlinedBoxes": 11,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 12,
+     "boxRadius": 20,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 766
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 109,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "inter",
+     "manrope"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 4409,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "header.relative.pt-16",
+      "tag": "header",
+      "top": 109,
+      "height": 985,
+      "words": 60,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Turn Dense Regulations Into",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 30,
+      "right": 30,
+      "textLeft": 30,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#features.py-20.md:py-28",
+      "tag": "section",
+      "top": 1094,
+      "height": 1289,
+      "words": 93,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Architected for Regulated Enterprise Environments",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 27,
+      "right": 27,
+      "textLeft": 27,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#frameworks.py-20.md:py-28",
+      "tag": "section",
+      "top": 2384,
+      "height": 1038,
+      "words": 61,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Supported Regulatory Frameworks",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 43,
+      "textLeft": 16,
+      "textRight": 43,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#contact.py-20.md:py-28",
+      "tag": "section",
+      "top": 3422,
+      "height": 762,
+      "words": 26,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Connect with Compliance Engineers",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 28,
+      "right": 28,
+      "textLeft": 28,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.py-12.bg-slate-900",
+      "tag": "footer",
+      "top": 4184,
+      "height": 225,
+      "words": 15,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 62,
+      "textLeft": 16,
+      "textRight": 62,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Turn Dense Regulations Into Active Security Controls",
+      "size": 36,
+      "top": 235,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [
+     {
+      "text": "Open Workspace",
+      "side": "right",
+      "px": 16
+     }
+    ],
+    "edges": [
+     {
+      "x": 41,
+      "n": 12
+     },
+     {
+      "x": 16,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 13,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 16,
+     "right": 16
+    },
+    "hero": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "words": 7,
+     "chars": 52,
+     "lines": 4,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Manrope",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 1.12,
+     "top": 235,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 11,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 11,
+     "radii": [
+      [
+       20,
+       7
+      ],
+      [
+       24,
+       4
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 7,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 4,
+     "hues": 3,
+     "samples": [
+      {
+       "hue": 214,
+       "size": 48,
+       "radius": "20px"
+      },
+      {
+       "hue": 48,
+       "size": 48,
+       "radius": "20px"
+      },
+      {
+       "hue": 150,
+       "size": 48,
+       "radius": "20px"
+      },
+      {
+       "hue": 221,
+       "size": 32,
+       "radius": "12px"
+      }
+     ]
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 3,
+     "tabularShare": 0,
+     "kpiMax": 30
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.22,
+     "tiny": 1,
+     "tinySamples": [
+      "Compliance AI 10px"
+     ],
+     "sizes": [
+      10,
+      12,
+      14,
+      16,
+      20,
+      24,
+      30,
+      36
+     ]
+    },
+    "title": {
+     "text": "Turn Dense Regulations Into Active Security Controls",
+     "size": 36,
+     "top": 235
+    },
+    "colourShare": 0.063
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "2 tiny uppercase letter-spaced label(s): \"Capabilities\", \"Compliance\"",
+   "fix": "Prefer sentence case at body size.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "gradient-text",
+   "width": 1440,
+   "message": "1 gradient-filled text element(s).",
+   "fix": "Solid colour text.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "contrast",
+   "width": 1440,
+   "message": "Low-contrast text: \"Continuous Auditing Active\" 3.7:1 needs 4.5:1; \"Continuous Auditing Active\" 3.7:1 needs 4.5:1; \"Continuous Auditing Active\" 3.7:1 needs 4.5:1; \"© 2026 Policy Intelligence Platform\" 3.7:1 needs 4.5:1",
+   "fix": "Darken or lighten the text colour.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-fallback",
+   "width": 1440,
+   "message": "Typeface(s) declared but not loaded, so a fallback is rendering: Inter",
+   "fix": "Fix the font URL / family name, or the screenshots you are judging are not the design."
+  },
+  {
+   "level": "FAIL",
+   "id": "icon-chips",
+   "width": 1440,
+   "message": "5 icons sit in tinted squares or circles in 3 different colours.",
+   "fix": "This is the commonest tell of a generated dashboard. Drop the tinted square: a KPI is a label and a number; an icon, if it helps, is plain and in the text colour.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "below-fold",
+   "width": 1440,
+   "message": "Only 4 of 11 blocks start on the first 1440px screen.",
+   "fix": "Every block the brief names shows its header and first rows on the first desktop screen: size the headline block to its question, cap long lists with \"View all\", and put time-sensitive blocks before long tables."
+  },
+  {
+   "level": "WARN",
+   "id": "app-title-size",
+   "width": 1440,
+   "message": "The h1 is 72px (\"Turn Dense Regulations Into Active Secur\").",
+   "fix": "An app screen is not a landing page: the title is 18-32px (20-24px on a phone).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"Turn Dense Regulations Into Active Security Cont\" → 3 lines (7 words, 60px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "edge-text",
+   "width": 768,
+   "message": "1 text block(s) sit within 16px of the screen edge: \"Open Workspace\" (14px from the right)",
+   "fix": "Keep text inside the page margin (16–32px or more). Only display type deliberately bled past the edge may touch it."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "2 headline(s) wrap past two lines at 390px: \"Turn Dense Regulations Into Active Security Cont\" → 4 lines (7 words, 36px); \"Architected for Regulated Enterprise Environment\" → 3 lines (5 words, 30px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "edge-text",
+   "width": 390,
+   "message": "1 text block(s) sit 12–15px from the phone's edge: \"Open Workspace\" (16px)",
+   "fix": "The page margin is 16–20px on a phone; the header and the corner labels sit on it too."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\coding\\SVP\\.taste-skill\\before_landing\\desktop-fold.jpg",
+   "pages": [
+    "C:\\coding\\SVP\\.taste-skill\\before_landing\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\coding\\SVP\\.taste-skill\\before_landing\\tablet-fold.jpg",
+   "pages": [
+    "C:\\coding\\SVP\\.taste-skill\\before_landing\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\coding\\SVP\\.taste-skill\\before_landing\\mobile-fold.jpg",
+   "pages": [
+    "C:\\coding\\SVP\\.taste-skill\\before_landing\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}
