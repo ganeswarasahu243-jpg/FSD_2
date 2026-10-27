@@ -5,13 +5,17 @@
   "scripts": {
     "install:all": "npm --prefix server install && npm --prefix client install",
     "migrate:data": "npm --prefix server run migrate",
+    "migrate:supabase": "npm --prefix server run migrate:supabase",
+    "backup": "npm --prefix server run backup",
     "test": "npm --prefix server test",
+    "test:supabase": "npm --prefix server run test:supabase",
     "test:atlas": "npm --prefix server run test:atlas",
     "build": "npm --prefix client run build",
     "build:prod": "npm run install:all && npm --prefix client run build",
     "start": "npm --prefix server start",
     "start:prod": "node server/server.js",
     "dev:server": "npm --prefix server run dev",
+    "dev:supabase": "node server/supabaseServer.js",
     "dev:client": "npm --prefix client run dev"
   },
   "keywords": [
@@ -24,5 +28,13 @@
     "policy-intelligence"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/server": "^1.9.2",
+    "@supabase/supabase-js": "^2.118.0",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.13",
+    "mammoth": "^1.13.0",
+    "pdf-parse": "^1.1.1"
+  }
 }

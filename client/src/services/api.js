@@ -4,6 +4,7 @@ const USER_KEY = 'sentinel_username';
 
 const RAW_API_BASE = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) || '';
 const API_BASE_URL = RAW_API_BASE.replace(/\/+$/, '');
+const SUPABASE_ANON_KEY = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SUPABASE_ANON_KEY) || '';
 
 export const getApiBaseUrl = () => API_BASE_URL;
 export const getAccessToken = () => localStorage.getItem(TOKEN_KEY);
@@ -31,6 +32,10 @@ export const apiRequest = async (endpoint, options = {}) => {
   const token = getAccessToken();
   const headers = { ...options.headers };
 
+  if (SUPABASE_ANON_KEY && !headers.apikey) {
+    headers.apikey = SUPABASE_ANON_KEY;
+  }
+
   if (token && !headers.Authorization) {
     headers.Authorization = `Bearer ${token}`;
   }
@@ -42,9 +47,14 @@ export const apiRequest = async (endpoint, options = {}) => {
     body = JSON.stringify(body);
   }
 
+  let cleanEndpoint = endpoint;
+  if (API_BASE_URL.endsWith('/api') && cleanEndpoint.startsWith('/api/')) {
+    cleanEndpoint = cleanEndpoint.slice(4);
+  }
+
   const targetUrl = endpoint.startsWith('http://') || endpoint.startsWith('https://')
     ? endpoint
-    : `${API_BASE_URL}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
+    : `${API_BASE_URL}${cleanEndpoint.startsWith('/') ? '' : '/'}${cleanEndpoint}`;
 
   const response = await fetch(targetUrl, {
     ...options,

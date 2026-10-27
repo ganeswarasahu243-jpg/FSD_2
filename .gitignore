@@ -18,6 +18,7 @@ client/.env
 
 # Local Database Files
 mongodb_data/
+backups/
 *.wt
 *.lock
 

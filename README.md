@@ -190,3 +190,61 @@ npm run build
 - [x] **Interactive Alert Queue**: "Solved" and "Still Pending" workflow actions fully functional.
 - [x] **Framework Coverage**: Real-time coverage calculation for GDPR, SOC 2 Type II, and HIPAA.
 - [x] **Automated Tests**: 12/12 integration tests passing with 100% success rate.
+
+---
+
+## 7. Supabase Edge Functions & PostgreSQL Architecture
+
+The backend has been ported to **TypeScript Supabase Edge Functions** backed by **Supabase PostgreSQL** and **Supabase Storage**.
+
+### Supabase Architecture Components
+
+1. **Database Schema & Migrations (`supabase/migrations/`)**:
+   - `20261027000000_create_sentinel_schema.sql`: Creates `users`, `policies`, `rules`, `logs`, and `violations` tables with foreign keys, cascade deletes, updated_at triggers, and Row Level Security (RLS) policies.
+   - `20261027000001_seed_sentinel_data.sql`: Idempotent data migration containing all authoritative records (users, policies, rules, logs, violations) migrated with preserved IDs.
+2. **Edge Functions (`supabase/functions/`)**:
+   - `api/index.ts`: High-performance unified Edge Function gateway routing all `/api/*` endpoints with zero frontend code modification.
+   - `_shared/auth.ts`: Dual-hash password verification (Django PBKDF2 SHA-256 + Bcrypt) and standard RFC 7519 HMAC SHA-256 JWT generation/verification via Web Crypto.
+   - `_shared/ruleEngine.ts`: NLP risk heuristic scoring, keyword classification, severity assignment, and rule extraction.
+   - `_shared/documentParser.ts`: In-memory PDF, DOCX, and TXT parsing.
+   - `_shared/cors.ts`: Universal CORS preflight handling.
+   - `_shared/supabaseClient.ts`: Lazy, authenticated Supabase client initialization.
+   - Domain functions: `auth`, `policies`, `monitoring`, `logs`, `violations`, `health`.
+3. **Supabase Storage**:
+   - Bucket: `policies` (stores uploaded policy documents with automatic access policies).
+
+### Supabase CLI & Deployment Commands
+
+```powershell
+# 1. Run Supabase Edge Function test suite
+npm --prefix server run test:supabase
+
+# 2. Re-generate or run database seed migration
+npm --prefix server run migrate:supabase
+
+# 3. Link your Supabase project (CLI)
+npx supabase link --project-ref <your-project-ref>
+
+# 4. Push PostgreSQL migrations to Supabase
+npx supabase db push
+
+# 5. Deploy Edge Function gateway
+npx supabase functions deploy api --no-verify-jwt
+
+# 6. Deploy domain functions (optional if calling directly)
+npx supabase functions deploy auth
+npx supabase functions deploy policies
+npx supabase functions deploy monitoring
+npx supabase functions deploy logs
+npx supabase functions deploy violations
+npx supabase functions deploy health
+```
+
+### Frontend Configuration with Supabase
+
+In `client/.env`:
+```env
+VITE_API_URL=https://<your-project-ref>.supabase.co/functions/v1/api
+VITE_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+```
+The React frontend in `client/src/services/api.js` automatically attaches the Supabase `apikey` header and handles token lifecycle without code changes.
