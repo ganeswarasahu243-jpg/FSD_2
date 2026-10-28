@@ -101,7 +101,7 @@ export default function SignupPage() {
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-400" />
-              <span>Persistent MongoDB Encrypted Workspace</span>
+              <span>Enterprise PostgreSQL Storage</span>
             </div>
           </div>
         </div>

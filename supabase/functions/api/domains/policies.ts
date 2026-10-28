@@ -319,3 +319,157 @@ export async function handleDownloadPolicyDocument(
     return errorResponse(error.message || 'Internal server error.', 500);
   }
 }
+
+/**
+ * Update policy title and/or content
+ * PUT /api/policies/:id
+ */
+export async function handleUpdatePolicy(
+  req: Request,
+  idParam: string,
+  adminClient: SupabaseClient
+): Promise<Response> {
+  try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
+    if (!['compliance_officer', 'admin'].includes(user.role)) {
+      return errorResponse('Forbidden: Only compliance officers and administrators can update policies.', 403);
+    }
+
+    const isNum = /^\d+$/.test(idParam);
+    let query = adminClient.from('policies').select('*');
+    if (isNum) {
+      query = query.or(`id.eq.${idParam},sqlite_id.eq.${idParam}`);
+    } else {
+      query = query.eq('id', idParam);
+    }
+
+    const { data: policy, error: policyErr } = await query.maybeSingle();
+    if (policyErr || !policy) {
+      return errorResponse('Policy not found.', 404);
+    }
+
+    const body = await req.json().catch(() => ({}));
+    const updates: Record<string, unknown> = {};
+
+    if (body.title !== undefined) {
+      const cleanTitle = String(body.title).trim();
+      if (!cleanTitle) {
+        return errorResponse('Policy title cannot be empty.', 400);
+      }
+      updates.title = cleanTitle;
+    }
+
+    let rulesCount = 0;
+    if (body.content_text !== undefined) {
+      const cleanText = String(body.content_text).trim();
+      updates.content_text = cleanText;
+
+      // Re-extract rules if text is updated
+      await adminClient.from('rules').delete().eq('policy_id', policy.id);
+      if (cleanText) {
+        const rules = await aiRules(cleanText);
+        const ruleInserts = rules.map((r) => ({
+          policy_id: policy.id,
+          description: r.description || '',
+          condition: r.condition || '',
+          action: r.action || '',
+        }));
+        if (ruleInserts.length > 0) {
+          const { data: insertedRules } = await adminClient.from('rules').insert(ruleInserts).select('id');
+          rulesCount = insertedRules?.length || 0;
+        }
+      }
+    }
+
+    if (Object.keys(updates).length > 0) {
+      const { data: updatedPolicy, error: updateErr } = await adminClient
+        .from('policies')
+        .update(updates)
+        .eq('id', policy.id)
+        .select('*')
+        .single();
+
+      if (updateErr || !updatedPolicy) {
+        return errorResponse(updateErr?.message || 'Failed to update policy.', 500);
+      }
+
+      return jsonResponse({
+        id: updatedPolicy.sqlite_id || updatedPolicy.id,
+        title: updatedPolicy.title,
+        source_name: updatedPolicy.source_name,
+        rules_count: rulesCount,
+        message: 'Policy updated successfully.',
+      }, 200);
+    }
+
+    return jsonResponse({
+      id: policy.sqlite_id || policy.id,
+      title: policy.title,
+      message: 'No changes provided.',
+    }, 200);
+  } catch (err: unknown) {
+    const error = err as Error;
+    return errorResponse(error.message || 'Internal server error.', 500);
+  }
+}
+
+/**
+ * Delete a policy and its rules
+ * DELETE /api/policies/:id
+ */
+export async function handleDeletePolicy(
+  req: Request,
+  idParam: string,
+  adminClient: SupabaseClient
+): Promise<Response> {
+  try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
+    if (!['compliance_officer', 'admin'].includes(user.role)) {
+      return errorResponse('Forbidden: Only compliance officers and administrators can delete policies.', 403);
+    }
+
+    const isNum = /^\d+$/.test(idParam);
+    let query = adminClient.from('policies').select('id, sqlite_id, title, document');
+    if (isNum) {
+      query = query.or(`id.eq.${idParam},sqlite_id.eq.${idParam}`);
+    } else {
+      query = query.eq('id', idParam);
+    }
+
+    const { data: policy, error: policyErr } = await query.maybeSingle();
+    if (policyErr || !policy) {
+      return errorResponse('Policy not found.', 404);
+    }
+
+    // Clean up document in storage if present
+    if (policy.document) {
+      try {
+        const cleanDocPath = policy.document.replace(/^\/+/, '');
+        await adminClient.storage.from('policies').remove([cleanDocPath]);
+      } catch (storageErr) {
+        console.warn('Notice: Failed to remove storage document during policy deletion:', storageErr);
+      }
+    }
+
+    // Cascade delete rules
+    await adminClient.from('rules').delete().eq('policy_id', policy.id);
+
+    // Delete policy record
+    const { error: delErr } = await adminClient.from('policies').delete().eq('id', policy.id);
+    if (delErr) {
+      return errorResponse(delErr.message || 'Failed to delete policy.', 500);
+    }
+
+    return jsonResponse({
+      detail: `Policy "${policy.title}" deleted successfully.`,
+      deleted_id: idParam,
+    }, 200);
+  } catch (err: unknown) {
+    const error = err as Error;
+    return errorResponse(error.message || 'Internal server error.', 500);
+  }
+}

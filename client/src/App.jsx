@@ -40,6 +40,7 @@ export default function App() {
           <Route path="/frameworks.html" element={<FrameworksPage />} />
 
           <Route path="/audits" element={<AuditsPage />} />
+          <Route path="/audits.html" element={<AuditsPage />} />
           <Route path="/audict.html" element={<AuditsPage />} />
 
           <Route path="/workflow" element={<WorkflowPage />} />

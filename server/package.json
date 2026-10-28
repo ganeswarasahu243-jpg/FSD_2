@@ -12,7 +12,8 @@
     "backup": "node scripts/backupData.js",
     "test": "node tests/api.test.js",
     "test:supabase": "node tests/supabaseFunctions.test.js",
-    "test:atlas": "node scripts/testAtlasConnection.js"
+    "test:atlas": "node scripts/testAtlasConnection.js",
+    "provision:demo": "node scripts/provisionDemoAccounts.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",

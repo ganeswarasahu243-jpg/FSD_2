@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Shield } from 'lucide-react';
-import { getStoredUsername } from '../services/api';
+import { getStoredUsername, getStoredRole } from '../services/api';
 
 export default function UserHeader({ onOpenMobile = () => {} }) {
   const username = getStoredUsername() || 'Signed in';
+  const role = getStoredRole() || 'employee';
 
   return (
     <header
@@ -29,7 +30,7 @@ export default function UserHeader({ onOpenMobile = () => {} }) {
             <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
             <span>Sentinel Core Cluster</span>
             <span className="text-slate-300">•</span>
-            <span className="text-emerald-700 font-semibold">MongoDB Synchronized</span>
+            <span className="text-emerald-700 font-semibold">Supabase PostgreSQL Synchronized</span>
           </div>
         </div>
       </div>
@@ -45,6 +46,9 @@ export default function UserHeader({ onOpenMobile = () => {} }) {
           </div>
           <span className="text-xs font-medium text-slate-800">
             {username}
+          </span>
+          <span className="hidden sm:inline-block text-[10px] px-1.5 py-0.2 rounded font-semibold bg-slate-100 text-slate-700">
+            {role === 'admin' ? 'Admin' : role === 'compliance_officer' ? 'Compliance' : 'Employee'}
           </span>
         </Link>
       </div>

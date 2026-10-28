@@ -191,7 +191,7 @@ export default function WorkflowPage() {
 
               <div className="space-y-3 text-xs">
                 <div className="flex justify-between p-2.5 rounded-lg border border-slate-100">
-                  <span className="text-slate-500">MongoDB Connection</span>
+                  <span className="text-slate-500">PostgreSQL Database</span>
                   <span className="font-bold text-emerald-600">Active (0ms latency)</span>
                 </div>
                 <div className="flex justify-between p-2.5 rounded-lg border border-slate-100">

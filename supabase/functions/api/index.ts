@@ -7,6 +7,8 @@ import {
   handleLogin,
   handleGetMe,
   handleUpdateProfile,
+  handleGetUsers,
+  handleUpdateUser,
 } from './domains/auth.ts';
 import {
   handleInterpretPolicy,
@@ -14,6 +16,8 @@ import {
   handleGetPolicies,
   handleGetPolicyById,
   handleDownloadPolicyDocument,
+  handleUpdatePolicy,
+  handleDeletePolicy,
 } from './domains/policies.ts';
 import {
   handleGetDashboard,
@@ -94,6 +98,16 @@ export async function handleRequest(req: Request): Promise<Response> {
       return await handleUpdateProfile(req, getAdmin());
     }
 
+    // User management domain (Admin only)
+    if ((normalizedPath === '/users' || normalizedPath === '/auth/users') && method === 'GET') {
+      return await handleGetUsers(req, getAdmin());
+    }
+
+    const userMatch = normalizedPath.match(/^\/(?:auth\/)?users\/([^/]+)$/);
+    if (userMatch && (method === 'PUT' || method === 'PATCH')) {
+      return await handleUpdateUser(req, userMatch[1], getAdmin());
+    }
+
     // Policies domain
     if (normalizedPath === '/policy-interpreter' && method === 'POST') {
       return await handleInterpretPolicy(req, getAdmin());
@@ -111,8 +125,16 @@ export async function handleRequest(req: Request): Promise<Response> {
     }
 
     const policyMatch = normalizedPath.match(/^\/policies\/([^/]+)$/);
-    if (policyMatch && method === 'GET') {
-      return await handleGetPolicyById(req, policyMatch[1], getAdmin());
+    if (policyMatch) {
+      if (method === 'GET') {
+        return await handleGetPolicyById(req, policyMatch[1], getAdmin());
+      }
+      if (method === 'PUT') {
+        return await handleUpdatePolicy(req, policyMatch[1], getAdmin());
+      }
+      if (method === 'DELETE') {
+        return await handleDeletePolicy(req, policyMatch[1], getAdmin());
+      }
     }
 
     // Monitoring domain

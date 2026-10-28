@@ -122,6 +122,7 @@ export const getStoredUsername = () => localStorage.getItem(USER_KEY);
 export const getStoredRole = () => localStorage.getItem(ROLE_KEY) || 'employee';
 export const isComplianceOrAdmin = () => ['compliance_officer', 'admin'].includes(getStoredRole());
 export const isAdmin = () => getStoredRole() === 'admin';
+export const isEmployee = () => getStoredRole() === 'employee';
 
 export const setAuthSession = (access, refresh, username, role) => {
   if (access) localStorage.setItem(TOKEN_KEY, access);
@@ -221,7 +222,7 @@ export const apiRequest = async (endpoint, options = {}) => {
   }
 
   // Handle 401 unauthorized (expired or invalid token)
-  if (response.status === 401 && !endpoint.includes('/api/auth/login')) {
+  if (response.status === 401 && !endpoint.includes('auth/login')) {
     clearAuthSession();
     if (typeof window !== 'undefined' && !window.location.pathname.startsWith('/login')) {
       window.location.href = '/login';

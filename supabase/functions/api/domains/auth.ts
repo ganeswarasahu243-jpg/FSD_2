@@ -211,3 +211,126 @@ export async function handleUpdateProfile(req: Request, adminClient: SupabaseCli
     return errorResponse(error.message || 'Internal server error.', 500);
   }
 }
+
+/**
+ * Admin: List all user accounts
+ * GET /api/users or /api/auth/users
+ */
+export async function handleGetUsers(req: Request, adminClient: SupabaseClient): Promise<Response> {
+  try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
+    // Enforce RBAC: strictly administrators only
+    if (user.role !== 'admin') {
+      return errorResponse('Forbidden: Administrator privilege required to view all user accounts.', 403);
+    }
+
+    const { data: users, error } = await adminClient
+      .from('users')
+      .select('id, sqlite_id, username, email, first_name, last_name, role, is_active, date_joined, created_at')
+      .order('id', { ascending: true });
+
+    if (error) {
+      return errorResponse(error.message, 500);
+    }
+
+    const formatted = (users || []).map((u) => ({
+      ...u,
+      id: u.sqlite_id || u.id,
+      db_id: u.id,
+      is_active: u.is_active !== false,
+    }));
+
+    return jsonResponse(formatted, 200);
+  } catch (err: unknown) {
+    const error = err as Error;
+    return errorResponse(error.message || 'Internal server error.', 500);
+  }
+}
+
+/**
+ * Admin: Update user role and active status
+ * PUT /api/users/:id or PATCH /api/users/:id
+ */
+export async function handleUpdateUser(
+  req: Request,
+  targetId: string,
+  adminClient: SupabaseClient
+): Promise<Response> {
+  try {
+    const { user: authUser, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !authUser) return authErr!;
+
+    // Enforce RBAC: strictly administrators only
+    if (authUser.role !== 'admin') {
+      return errorResponse('Forbidden: Administrator privilege required to modify user roles and statuses.', 403);
+    }
+
+    const isNum = /^\d+$/.test(targetId);
+    let query = adminClient.from('users').select('*');
+    if (isNum) {
+      query = query.or(`id.eq.${targetId},sqlite_id.eq.${targetId}`);
+    } else {
+      query = query.eq('id', targetId);
+    }
+
+    const { data: targetUser, error: findErr } = await query.maybeSingle();
+    if (findErr || !targetUser) {
+      return errorResponse('User not found.', 404);
+    }
+
+    const body = await req.json().catch(() => ({}));
+    const updates: Record<string, unknown> = {};
+
+    // Validate role
+    if (body.role !== undefined) {
+      const validRoles = ['employee', 'compliance_officer', 'admin'];
+      const targetRole = String(body.role).trim();
+      if (!validRoles.includes(targetRole)) {
+        return errorResponse(`Invalid role: ${targetRole}. Must be one of: employee, compliance_officer, admin.`, 400);
+      }
+      // Safety guard: prevent administrator from demoting themselves
+      if (String(targetUser.id) === String(authUser.id) && targetRole !== 'admin') {
+        return errorResponse('Administrators cannot revoke their own admin role.', 400);
+      }
+      updates.role = targetRole;
+    }
+
+    // Validate active status
+    if (body.is_active !== undefined) {
+      const isActive = Boolean(body.is_active);
+      // Safety guard: prevent administrator from deactivating themselves
+      if (String(targetUser.id) === String(authUser.id) && !isActive) {
+        return errorResponse('Administrators cannot deactivate their own account.', 400);
+      }
+      updates.is_active = isActive;
+    }
+
+    if (Object.keys(updates).length === 0) {
+      return errorResponse('No valid update fields provided (role or is_active).', 400);
+    }
+
+    const { data: updated, error: updateErr } = await adminClient
+      .from('users')
+      .update(updates)
+      .eq('id', targetUser.id)
+      .select('id, sqlite_id, username, email, first_name, last_name, role, is_active, created_at')
+      .single();
+
+    if (updateErr || !updated) {
+      return errorResponse(updateErr?.message || 'Failed to update user.', 500);
+    }
+
+    return jsonResponse({
+      user: {
+        ...updated,
+        id: updated.sqlite_id || updated.id,
+      },
+      message: `User ${updated.username} updated successfully.`,
+    }, 200);
+  } catch (err: unknown) {
+    const error = err as Error;
+    return errorResponse(error.message || 'Internal server error.', 500);
+  }
+}

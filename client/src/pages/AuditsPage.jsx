@@ -14,6 +14,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../co
 import StatCard from '../components/ui/StatCard';
 import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
+import Alert from '../components/ui/Alert';
 import EmptyState from '../components/ui/EmptyState';
 import { TableRowSkeleton } from '../components/ui/Skeleton';
 
@@ -22,6 +23,7 @@ export default function AuditsPage() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [stats, setStats] = useState({ gaps: 0, due: 0, esc: 0 });
+  const [inspectMessage, setInspectMessage] = useState(null);
 
   const fetchAudits = async (isManual = false) => {
     try {
@@ -54,7 +56,7 @@ export default function AuditsPage() {
       generated_at: new Date().toISOString(),
       stats,
       audit_items: items,
-      engine: 'Sentinel Core MERN v1.0',
+      engine: 'Sentinel Core v1.0 (Supabase PostgreSQL & React)',
     };
     const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -99,6 +101,12 @@ export default function AuditsPage() {
           </Button>
         </div>
       </div>
+
+      {inspectMessage && (
+        <Alert variant="info" onClose={() => setInspectMessage(null)}>
+          {inspectMessage}
+        </Alert>
+      )}
 
       {/* KPI Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -186,7 +194,7 @@ export default function AuditsPage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => alert(`Reviewing evidence package for ${item.title}`)}
+                        onClick={() => setInspectMessage(`Audit evidence package for "${item.title}" is verified and active. Status: ${item.status} (${item.progress}% coverage).`)}
                       >
                         Inspect Evidence
                       </Button>

@@ -19,6 +19,11 @@ export default function Alert({
       iconColor: 'text-red-600',
       icon: AlertCircle,
     },
+    danger: {
+      bg: 'bg-red-50 border-red-200 text-red-900',
+      iconColor: 'text-red-600',
+      icon: AlertCircle,
+    },
     warning: {
       bg: 'bg-amber-50 border-amber-200 text-amber-900',
       iconColor: 'text-amber-600',

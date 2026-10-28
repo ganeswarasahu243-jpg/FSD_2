@@ -13,14 +13,14 @@ import {
   X,
   ExternalLink,
 } from 'lucide-react';
-import { clearAuthSession, getStoredUsername } from '../services/api';
+import { clearAuthSession, getStoredUsername, getStoredRole } from '../services/api';
 
 const navItems = [
   { id: 'dashboard', label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { id: 'policies', label: 'Policies', path: '/policies', icon: FileText },
   { id: 'monitoring', label: 'Monitoring', path: '/monitoring', icon: Activity },
   { id: 'frameworks', label: 'Frameworks', path: '/frameworks', icon: ShieldCheck },
-  { id: 'audict', label: 'Audits', path: '/audits', icon: ClipboardCheck },
+  { id: 'audits', label: 'Audits', path: '/audits', icon: ClipboardCheck },
   { id: 'workflow', label: 'Workflow', path: '/workflow', icon: GitFork },
   { id: 'settings', label: 'Settings', path: '/settings', icon: Settings },
 ];
@@ -28,6 +28,8 @@ const navItems = [
 export default function Sidebar({ mobileOpen = false, onCloseMobile = () => {} }) {
   const navigate = useNavigate();
   const username = getStoredUsername() || 'User';
+  const role = getStoredRole() || 'employee';
+  const roleLabel = role === 'admin' ? 'Administrator' : role === 'compliance_officer' ? 'Compliance Officer' : 'Employee';
 
   const handleLogout = () => {
     clearAuthSession();
@@ -114,7 +116,7 @@ export default function Sidebar({ mobileOpen = false, onCloseMobile = () => {} }
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold text-slate-900 truncate">{username}</p>
-            <p className="text-[11px] text-slate-600">Authenticated</p>
+            <p className="text-[11px] text-slate-600 truncate">{roleLabel}</p>
           </div>
         </NavLink>
 

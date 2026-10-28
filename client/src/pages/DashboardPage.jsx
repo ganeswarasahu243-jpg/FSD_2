@@ -13,7 +13,7 @@ import {
   ArrowRight,
   ExternalLink,
 } from 'lucide-react';
-import { apiRequest } from '../services/api';
+import { apiRequest, isComplianceOrAdmin } from '../services/api';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/Card';
 import StatCard from '../components/ui/StatCard';
 import Badge from '../components/ui/Badge';
@@ -141,8 +141,8 @@ export default function DashboardPage() {
             Refresh Data
           </Button>
           <Link to="/policies">
-            <Button size="sm" icon={PlusCircle}>
-              Ingest Policy
+            <Button size="sm" icon={isComplianceOrAdmin() ? PlusCircle : FileText}>
+              {isComplianceOrAdmin() ? 'Ingest Policy' : 'View Policies'}
             </Button>
           </Link>
         </div>
@@ -285,22 +285,30 @@ export default function DashboardPage() {
                   </div>
 
                   <div className="mt-5 grid grid-cols-2 gap-2 pt-3 border-t border-slate-100">
-                    <Button
-                      variant="success"
-                      size="sm"
-                      icon={CheckCircle2}
-                      onClick={() => handleAlertAction(item.id, 'solve')}
-                    >
-                      Solved
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      icon={Clock}
-                      onClick={() => handleAlertAction(item.id, 'pending')}
-                    >
-                      Pending
-                    </Button>
+                    {isComplianceOrAdmin() ? (
+                      <>
+                        <Button
+                          variant="success"
+                          size="sm"
+                          icon={CheckCircle2}
+                          onClick={() => handleAlertAction(item.id, 'solve')}
+                        >
+                          Solved
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          icon={Clock}
+                          onClick={() => handleAlertAction(item.id, 'pending')}
+                        >
+                          Pending
+                        </Button>
+                      </>
+                    ) : (
+                      <span className="col-span-2 text-[11px] text-slate-400 italic py-1 text-center">
+                        Triage restricted to Compliance / Admin
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}

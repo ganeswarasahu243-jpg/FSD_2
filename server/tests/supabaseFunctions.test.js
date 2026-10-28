@@ -396,6 +396,10 @@ async function runTests() {
     { method: 'GET', path: 'http://localhost/api/violations' },
     { method: 'GET', path: 'http://localhost/api/auth/me' },
     { method: 'PUT', path: 'http://localhost/api/auth/profile' },
+    { method: 'GET', path: 'http://localhost/api/users' },
+    { method: 'PUT', path: 'http://localhost/api/users/1' },
+    { method: 'DELETE', path: 'http://localhost/api/policies/1' },
+    { method: 'PUT', path: 'http://localhost/api/policies/1' },
   ];
 
   for (const ep of protectedEndpoints) {
@@ -487,7 +491,8 @@ async function runTests() {
                     u[filterCol] &&
                     String(u[filterCol]).toLowerCase() === String(filterVal || '').toLowerCase()) ||
                   u.id == filterVal ||
-                  u.sqlite_id == filterVal
+                  u.sqlite_id == filterVal ||
+                  (orClause && (orClause.includes(`id.eq.${u.id}`) || orClause.includes(`sqlite_id.eq.${u.sqlite_id}`)))
               );
               return { data: found || null, error: null };
             }
@@ -556,6 +561,8 @@ async function runTests() {
               resolve({ data: policies, error: null });
             } else if (table === 'rules') {
               resolve({ data: rules, error: null });
+            } else if (table === 'users') {
+              resolve({ data: users, error: null });
             } else {
               resolve({ data: [], error: null });
             }
@@ -573,6 +580,7 @@ async function runTests() {
               error: null,
             };
           },
+          remove: async (paths) => ({ data: paths, error: null }),
         }),
       },
     };
@@ -748,6 +756,150 @@ async function runTests() {
     const updated = client._updated.users;
     if (!updated || updated.role !== 'compliance_officer') {
       throw new Error('Admin should be able to modify roles');
+    }
+  });
+
+  // --- Admin User Management & Role Administration Tests ---
+  await test('Employee role receives HTTP 403 on User List', async () => {
+    const req = new Request('http://localhost/api/users', {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${empToken}` },
+    });
+    const res = await authDomain.handleGetUsers(req, mockDbWithUsers);
+    if (res.status !== 403) throw new Error(`Expected 403 Forbidden, got ${res.status}`);
+  });
+
+  await test('Compliance Officer role receives HTTP 403 on User List', async () => {
+    const req = new Request('http://localhost/api/users', {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${compToken}` },
+    });
+    const res = await authDomain.handleGetUsers(req, mockDbWithUsers);
+    if (res.status !== 403) throw new Error(`Expected 403 Forbidden, got ${res.status}`);
+  });
+
+  await test('Administrator receives HTTP 200 on User List', async () => {
+    const req = new Request('http://localhost/api/users', {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${adminToken}` },
+    });
+    const res = await authDomain.handleGetUsers(req, mockDbWithUsers);
+    if (res.status !== 200) throw new Error(`Expected 200 OK, got ${res.status}`);
+    const usersList = await res.json();
+    if (!Array.isArray(usersList) || usersList.length === 0) {
+      throw new Error('Expected user list array');
+    }
+  });
+
+  await test('Employee role receives HTTP 403 on User Update', async () => {
+    const req = new Request('http://localhost/api/users/2', {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${empToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ role: 'compliance_officer' }),
+    });
+    const res = await authDomain.handleUpdateUser(req, '2', mockDbWithUsers);
+    if (res.status !== 403) throw new Error(`Expected 403 Forbidden, got ${res.status}`);
+  });
+
+  await test('Administrator CAN update another user role via PUT /api/users/:id', async () => {
+    const client = createMockSupabaseClient({
+      users: [adminUser, employeeUser],
+    });
+    const req = new Request('http://localhost/api/users/101', {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${adminToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ role: 'compliance_officer' }),
+    });
+    const res = await authDomain.handleUpdateUser(req, '101', client);
+    if (res.status !== 200) throw new Error(`Expected 200 OK, got ${res.status}`);
+    const updated = client._updated.users;
+    if (!updated || updated.role !== 'compliance_officer') {
+      throw new Error('Expected user role to be updated to compliance_officer');
+    }
+  });
+
+  await test('Administrator cannot deactivate or demote their own account via user management', async () => {
+    const client = createMockSupabaseClient({
+      users: [adminUser],
+    });
+    // Test 1: Self-demotion rejected
+    const reqDemote = new Request('http://localhost/api/users/103', {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${adminToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ role: 'employee' }),
+    });
+    const resDemote = await authDomain.handleUpdateUser(reqDemote, '103', client);
+    if (resDemote.status !== 400) throw new Error(`Expected 400 on self-demotion, got ${resDemote.status}`);
+
+    // Test 2: Self-deactivation rejected
+    const reqDeact = new Request('http://localhost/api/users/103', {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${adminToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ is_active: false }),
+    });
+    const resDeact = await authDomain.handleUpdateUser(reqDeact, '103', client);
+    if (resDeact.status !== 400) throw new Error(`Expected 400 on self-deactivation, got ${resDeact.status}`);
+  });
+
+  // --- Policy Management (Update & Delete) Tests ---
+  await test('Employee role receives HTTP 403 on Policy Deletion', async () => {
+    const req = new Request('http://localhost/api/policies/1', {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${empToken}` },
+    });
+    const res = await policiesDomain.handleDeletePolicy(req, '1', mockDbWithUsers);
+    if (res.status !== 403) throw new Error(`Expected 403 Forbidden, got ${res.status}`);
+  });
+
+  await test('Administrator / Compliance Officer CAN delete policy via DELETE /api/policies/:id', async () => {
+    const samplePolicy = { id: 5, sqlite_id: 5, title: 'Obsolete Policy', document: 'policies/old.pdf' };
+    const client = createMockSupabaseClient({
+      users: [adminUser],
+      policies: [samplePolicy],
+    });
+    const req = new Request('http://localhost/api/policies/5', {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${adminToken}` },
+    });
+    const res = await policiesDomain.handleDeletePolicy(req, '5', client);
+    if (res.status !== 200) throw new Error(`Expected 200 OK, got ${res.status}`);
+    const data = await res.json();
+    if (!data.detail || !data.detail.includes('deleted successfully')) {
+      throw new Error('Expected deletion confirmation message');
+    }
+  });
+
+  await test('Administrator / Compliance Officer CAN update policy via PUT /api/policies/:id', async () => {
+    const samplePolicy = { id: 5, sqlite_id: 5, title: 'Old Title', content_text: 'Old text' };
+    const client = createMockSupabaseClient({
+      users: [adminUser],
+      policies: [samplePolicy],
+    });
+    const req = new Request('http://localhost/api/policies/5', {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${adminToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title: 'New Updated Title', content_text: 'Strict access rules.' }),
+    });
+    const res = await policiesDomain.handleUpdatePolicy(req, '5', client);
+    if (res.status !== 200) throw new Error(`Expected 200 OK, got ${res.status}`);
+    const data = await res.json();
+    if (data.title !== 'New Updated Title') {
+      throw new Error(`Expected updated title, got ${data.title}`);
     }
   });
 
@@ -991,6 +1143,39 @@ async function runTests() {
     }
   });
 
+  await test('Frontend DashboardPage gates alert triage for non-compliance users', async () => {
+    const pagePath = path.resolve(__dirname, '..', '..', 'client', 'src', 'pages', 'DashboardPage.jsx');
+    const content = fs.readFileSync(pagePath, 'utf8');
+    if (!content.includes('isComplianceOrAdmin()')) {
+      throw new Error('DashboardPage does not check isComplianceOrAdmin()');
+    }
+    if (!content.includes('Triage restricted to Compliance / Admin')) {
+      throw new Error('DashboardPage does not indicate restricted triage for employees');
+    }
+  });
+
+  await test('Frontend LoginPage connects credential autofill buttons', async () => {
+    const pagePath = path.resolve(__dirname, '..', '..', 'client', 'src', 'pages', 'LoginPage.jsx');
+    const content = fs.readFileSync(pagePath, 'utf8');
+    if (!content.includes('onClick={fillAdminAccount}')) {
+      throw new Error('LoginPage does not bind onClick={fillAdminAccount}');
+    }
+    if (!content.includes('onClick={fillEmployeeAccount}')) {
+      throw new Error('LoginPage does not bind onClick={fillEmployeeAccount}');
+    }
+  });
+
+  await test('Frontend SettingsPage includes User Management interface for administrators', async () => {
+    const pagePath = path.resolve(__dirname, '..', '..', 'client', 'src', 'pages', 'SettingsPage.jsx');
+    const content = fs.readFileSync(pagePath, 'utf8');
+    if (!content.includes('isAdmin()')) {
+      throw new Error('SettingsPage does not check isAdmin() for user management');
+    }
+    if (!content.includes('/api/users/')) {
+      throw new Error('SettingsPage does not request /api/users/');
+    }
+  });
+
   await test('Frontend api.js validates API base URLs and rejects placeholders', async () => {
     const apiJsPath = path.resolve(__dirname, '..', '..', 'client', 'src', 'services', 'api.js');
     const content = fs.readFileSync(apiJsPath, 'utf8');
@@ -1061,6 +1246,277 @@ async function runTests() {
     }
     if (resolveAnonKey('sb_publishable_test_token_valid_key') !== 'sb_publishable_test_token_valid_key') {
       throw new Error('Expected resolveAnonKey to return valid key');
+    }
+  });
+
+  // --- 13. Demo Accounts & Role-Based Workflows Verification ---
+  await test('Seed, Monolithic Deploy, and Dedicated Provisioning Migrations configure distinct demo accounts', async () => {
+    const seedPath = path.resolve(__dirname, '..', '..', 'supabase', 'migrations', '20261027000001_seed_sentinel_data.sql');
+    const deployPath = path.resolve(__dirname, '..', '..', 'supabase', 'migrations', 'deploy_all_to_supabase.sql');
+    const provPath = path.resolve(__dirname, '..', '..', 'supabase', 'migrations', '20261029000001_provision_demo_accounts.sql');
+
+    if (!fs.existsSync(provPath)) throw new Error('20261029000001_provision_demo_accounts.sql migration missing');
+    const provSql = fs.readFileSync(provPath, 'utf8');
+    const seedSql = fs.readFileSync(seedPath, 'utf8');
+    const deploySql = fs.readFileSync(deployPath, 'utf8');
+
+    for (const sql of [provSql, seedSql, deploySql]) {
+      if (!sql.includes("'demo.employee'")) throw new Error('Missing demo.employee in migration');
+      if (!sql.includes("'demo.admin'")) throw new Error('Missing demo.admin in migration');
+    }
+
+    if (!provSql.includes("role = 'employee'")) throw new Error('demo.employee not set to employee role');
+    if (!provSql.includes("role = 'admin'")) throw new Error('demo.admin not set to admin role');
+  });
+
+  const demoEmployeePass = 'demo1234';
+  const demoAdminPass = 'adminDemo2026!';
+  const demoEmpUser = {
+    id: 2,
+    sqlite_id: 2,
+    username: 'demo.employee',
+    password: authModule.hashPassword(demoEmployeePass),
+    role: 'employee',
+    is_active: true,
+  };
+  const demoAdminUser = {
+    id: 12,
+    sqlite_id: 12,
+    username: 'demo.admin',
+    password: authModule.hashPassword(demoAdminPass),
+    role: 'admin',
+    is_active: true,
+  };
+
+  const mockDbWithDemoAccounts = createMockSupabaseClient({
+    users: [demoEmpUser, demoAdminUser],
+    policies: [{ id: 1, sqlite_id: 1, title: 'Corporate Security', document: 'policies/sec.pdf', uploaded_by: 12 }],
+    violations: [{ id: 1, sqlite_id: 1, user_id: 2, status: 'Open', message: 'Test breach' }],
+    logs: [{ id: 1, sqlite_id: 1, user_id: 2, username: 'demo.employee', action: 'Accessed files' }],
+  });
+
+  let demoEmpAccess = null;
+  let demoAdminAccess = null;
+
+  await test('Demo Employee login succeeds and issues JWT with role employee', async () => {
+    const req = new Request('http://localhost/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: 'demo.employee', password: demoEmployeePass }),
+    });
+    const res = await authDomain.handleLogin(req, mockDbWithDemoAccounts);
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+    const data = await res.json();
+    if (data.user?.role !== 'employee') throw new Error(`Expected role employee, got: ${data.user?.role}`);
+    if (!data.access || !data.refresh) throw new Error('Missing JWT tokens');
+    demoEmpAccess = data.access;
+
+    const payload = await authModule.verifyToken(data.access);
+    if (payload.role !== 'employee') throw new Error(`JWT payload role is not employee: ${payload.role}`);
+  });
+
+  await test('Demo Administrator login succeeds and issues JWT with role admin', async () => {
+    const req = new Request('http://localhost/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: 'demo.admin', password: demoAdminPass }),
+    });
+    const res = await authDomain.handleLogin(req, mockDbWithDemoAccounts);
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+    const data = await res.json();
+    if (data.user?.role !== 'admin') throw new Error(`Expected role admin, got: ${data.user?.role}`);
+    if (!data.access || !data.refresh) throw new Error('Missing JWT tokens');
+    demoAdminAccess = data.access;
+
+    const payload = await authModule.verifyToken(data.access);
+    if (payload.role !== 'admin') throw new Error(`JWT payload role is not admin: ${payload.role}`);
+  });
+
+  await test('Demo accounts reject invalid or cross-swapped passwords with HTTP 401', async () => {
+    // demo.employee with admin password
+    const reqSwappedEmp = new Request('http://localhost/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: 'demo.employee', password: demoAdminPass }),
+    });
+    const resSwappedEmp = await authDomain.handleLogin(reqSwappedEmp, mockDbWithDemoAccounts);
+    if (resSwappedEmp.status !== 401) throw new Error(`Expected 401, got ${resSwappedEmp.status}`);
+
+    // demo.admin with employee password
+    const reqSwappedAdmin = new Request('http://localhost/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: 'demo.admin', password: demoEmployeePass }),
+    });
+    const resSwappedAdmin = await authDomain.handleLogin(reqSwappedAdmin, mockDbWithDemoAccounts);
+    if (resSwappedAdmin.status !== 401) throw new Error(`Expected 401, got ${resSwappedAdmin.status}`);
+  });
+
+  await test('Demo Employee token is rejected (HTTP 403) on administrator-only and compliance endpoints', async () => {
+    const headers = { Authorization: `Bearer ${demoEmpAccess}` };
+
+    // 1. User Management (admin only)
+    const resUsers = await authDomain.handleGetUsers(new Request('http://localhost/api/users', { headers }), mockDbWithDemoAccounts);
+    if (resUsers.status !== 403) throw new Error(`Expected 403 on GET /api/users, got ${resUsers.status}`);
+
+    const resUpdateUser = await authDomain.handleUpdateUser(
+      new Request('http://localhost/api/users/12', { method: 'PUT', headers, body: JSON.stringify({ role: 'admin' }) }),
+      '12',
+      mockDbWithDemoAccounts
+    );
+    if (resUpdateUser.status !== 403) throw new Error(`Expected 403 on PUT /api/users/:id, got ${resUpdateUser.status}`);
+
+    // 2. Policy interpretation & save (compliance / admin)
+    const resInterpret = await policiesDomain.handleInterpretPolicy(
+      new Request('http://localhost/api/policy-interpreter', { method: 'POST', headers, body: JSON.stringify({ text: 'policy text' }) }),
+      mockDbWithDemoAccounts
+    );
+    if (resInterpret.status !== 403) throw new Error(`Expected 403 on policy-interpreter, got ${resInterpret.status}`);
+
+    // 3. Activity simulation (compliance / admin)
+    const resSim = await monitoringDomain.handleRecordActivityDemo(
+      new Request('http://localhost/api/activity-demo', { method: 'POST', headers }),
+      mockDbWithDemoAccounts
+    );
+    if (resSim.status !== 403) throw new Error(`Expected 403 on activity-demo, got ${resSim.status}`);
+
+    // 4. Alert triage (compliance / admin)
+    const resResolve = await monitoringDomain.handleResolveAlert(
+      new Request('http://localhost/api/alerts/1/resolve', { method: 'POST', headers }),
+      '1',
+      mockDbWithDemoAccounts
+    );
+    if (resResolve.status !== 403) throw new Error(`Expected 403 on alert resolve, got ${resResolve.status}`);
+
+    // 5. Violations list (compliance / admin)
+    const resViolations = await violationsDomain.handleGetViolations(
+      new Request('http://localhost/api/violations', { headers }),
+      mockDbWithDemoAccounts
+    );
+    if (resViolations.status !== 403) throw new Error(`Expected 403 on violations, got ${resViolations.status}`);
+  });
+
+  await test('Demo Administrator token has full authorization on admin and compliance endpoints', async () => {
+    const headers = { Authorization: `Bearer ${demoAdminAccess}` };
+
+    // 1. User Management (admin only)
+    const resUsers = await authDomain.handleGetUsers(new Request('http://localhost/api/users', { headers }), mockDbWithDemoAccounts);
+    if (resUsers.status !== 200) throw new Error(`Expected 200 on GET /api/users, got ${resUsers.status}`);
+
+    // 2. Policy interpretation (compliance / admin)
+    const resInterpret = await policiesDomain.handleInterpretPolicy(
+      new Request('http://localhost/api/policy-interpreter', {
+        method: 'POST',
+        headers: { ...headers, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'Test Policy', policy_text: 'Valid test policy text for AI rules' }),
+      }),
+      mockDbWithDemoAccounts
+    );
+    if (resInterpret.status !== 200) throw new Error(`Expected 200 on policy-interpreter, got ${resInterpret.status}`);
+
+    // 3. Activity simulation (compliance / admin)
+    const resSim = await monitoringDomain.handleRecordActivityDemo(
+      new Request('http://localhost/api/activity-demo', {
+        method: 'POST',
+        headers: { ...headers, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ employee: 'demo.employee', action: 'Download records' }),
+      }),
+      mockDbWithDemoAccounts
+    );
+    if (resSim.status !== 201 && resSim.status !== 200) {
+      throw new Error(`Expected 201/200 on activity-demo, got ${resSim.status}`);
+    }
+
+    // 4. Violations list (compliance / admin)
+    const resViolations = await violationsDomain.handleGetViolations(
+      new Request('http://localhost/api/violations', { headers }),
+      mockDbWithDemoAccounts
+    );
+    if (resViolations.status !== 200) throw new Error(`Expected 200 on violations, got ${resViolations.status}`);
+  });
+
+  await test('Demo Employee workflows (policies, logs, profile) execute successfully', async () => {
+    const headers = { Authorization: `Bearer ${demoEmpAccess}` };
+
+    // 1. Read policies
+    const resPolicies = await policiesDomain.handleGetPolicies(
+      new Request('http://localhost/api/policies', { headers }),
+      mockDbWithDemoAccounts
+    );
+    if (resPolicies.status !== 200) throw new Error(`Expected 200 on GET /api/policies, got ${resPolicies.status}`);
+
+    // 2. Read logs
+    const resLogs = await logsDomain.handleGetLogs(
+      new Request('http://localhost/api/logs', { headers }),
+      mockDbWithDemoAccounts
+    );
+    if (resLogs.status !== 200) throw new Error(`Expected 200 on GET /api/logs, got ${resLogs.status}`);
+
+    // 3. Authenticate current user
+    const resMe = await authDomain.handleGetMe(
+      new Request('http://localhost/api/auth/me', { headers }),
+      mockDbWithDemoAccounts
+    );
+    if (resMe.status !== 200) throw new Error(`Expected 200 on GET /api/auth/me, got ${resMe.status}`);
+    const meData = await resMe.json();
+    if (meData.username !== 'demo.employee' || meData.role !== 'employee') {
+      throw new Error(`Unexpected /auth/me data: ${JSON.stringify(meData)}`);
+    }
+  });
+
+  await test('Public registration strictly enforces employee role and rejects privilege escalation', async () => {
+    let capturedUser = null;
+    const testDb = createMockSupabaseClient({
+      users: [],
+      onInsert: {
+        users: (u) => {
+          capturedUser = u;
+        },
+      },
+    });
+
+    const regReq = new Request('http://localhost/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: 'malicious_user',
+        password: 'password123',
+        role: 'admin', // Attempted elevation
+      }),
+    });
+
+    const regRes = await authDomain.handleRegister(regReq, testDb);
+    if (regRes.status !== 201) throw new Error(`Expected 201 Created, got ${regRes.status}`);
+    if (capturedUser?.role !== 'employee') {
+      throw new Error(`Security breach: Registration allowed role ${capturedUser?.role}`);
+    }
+  });
+
+  await test('Frontend demo accounts configuration and LoginPage avoid hardcoded credentials in source', async () => {
+    const configPath = path.resolve(__dirname, '..', '..', 'client', 'src', 'config', 'demoAccounts.js');
+    if (!fs.existsSync(configPath)) throw new Error('demoAccounts.js configuration missing');
+    const configContent = fs.readFileSync(configPath, 'utf8');
+
+    if (!configContent.includes('DEMO_ACCOUNTS')) throw new Error('Missing DEMO_ACCOUNTS export');
+    if (!configContent.includes('VITE_DEMO_EMPLOYEE_PASSWORD')) throw new Error('demoAccounts.js must read VITE_DEMO_EMPLOYEE_PASSWORD');
+    if (!configContent.includes('VITE_DEMO_ADMIN_PASSWORD')) throw new Error('demoAccounts.js must read VITE_DEMO_ADMIN_PASSWORD');
+
+    const pagePath = path.resolve(__dirname, '..', '..', 'client', 'src', 'pages', 'LoginPage.jsx');
+    const pageContent = fs.readFileSync(pagePath, 'utf8');
+
+    // Assert NO plaintext demo passwords are hardcoded in LoginPage source
+    if (pageContent.includes("'123456'") || pageContent.includes('"123456"') || pageContent.includes("'demo1234'") || pageContent.includes("'adminDemo2026!'")) {
+      throw new Error('Plaintext password detected in LoginPage.jsx source code!');
+    }
+
+    // Assert both distinct cards are rendered
+    if (!pageContent.includes('Administrator Demo') || !pageContent.includes('Employee Demo')) {
+      throw new Error('LoginPage.jsx must render distinct Administrator Demo and Employee Demo options');
+    }
+
+    // Assert autofill handlers are present and bound
+    if (!pageContent.includes('onClick={fillAdminAccount}') || !pageContent.includes('onClick={fillEmployeeAccount}')) {
+      throw new Error('Autofill handlers not properly bound in LoginPage.jsx');
     }
   });
 
