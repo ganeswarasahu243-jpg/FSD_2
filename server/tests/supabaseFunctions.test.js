@@ -991,6 +991,79 @@ async function runTests() {
     }
   });
 
+  await test('Frontend api.js validates API base URLs and rejects placeholders', async () => {
+    const apiJsPath = path.resolve(__dirname, '..', '..', 'client', 'src', 'services', 'api.js');
+    const content = fs.readFileSync(apiJsPath, 'utf8');
+
+    // 1. Verify required functions are exported
+    if (!content.includes('export const validateApiBaseUrl')) throw new Error('Missing validateApiBaseUrl export');
+    if (!content.includes('export const validateAnonKey')) throw new Error('Missing validateAnonKey export');
+    if (!content.includes('export const resolveApiBaseUrl')) throw new Error('Missing resolveApiBaseUrl export');
+    if (!content.includes('export const resolveAnonKey')) throw new Error('Missing resolveAnonKey export');
+    if (!content.includes('export const checkApiConfiguration')) throw new Error('Missing checkApiConfiguration export');
+
+    // 2. Verify NO hardcoded anon key exists in api.js
+    if (content.includes('PRODUCTION_SUPABASE_ANON_KEY') || content.includes('sb_publishable_aqeP6F6QCf')) {
+      throw new Error('Hardcoded PRODUCTION_SUPABASE_ANON_KEY or key fallback still exists in api.js');
+    }
+
+    // 3. Import and functionally test the validation logic
+    const { validateApiBaseUrl, validateAnonKey, resolveApiBaseUrl, resolveAnonKey } = await import('../../client/src/services/api.js');
+
+    // Test missing / empty API URLs
+    if (validateApiBaseUrl('').isValid !== false) throw new Error('Expected empty API URL to be invalid');
+    if (validateApiBaseUrl(null).isValid !== false) throw new Error('Expected null API URL to be invalid');
+    if (validateApiBaseUrl(undefined).isValid !== false) throw new Error('Expected undefined API URL to be invalid');
+
+    // Test placeholder API URLs
+    const placeholders = [
+      'https://your_project_ref.supabase.co/functions/v1/api',
+      'https://your-project-ref.supabase.co/functions/v1/api',
+      'https://<your-project-ref>.supabase.co/functions/v1/api',
+      'https://placeholder.supabase.co/functions/v1/api',
+      'https://example.com/api',
+    ];
+    for (const ph of placeholders) {
+      const res = validateApiBaseUrl(ph);
+      if (res.isValid !== false || res.reason !== 'placeholder') {
+        throw new Error(`Expected placeholder URL ${ph} to be flagged as invalid placeholder`);
+      }
+      if (resolveApiBaseUrl(ph) !== '') {
+        throw new Error(`Expected resolveApiBaseUrl to fail cleanly on placeholder ${ph}`);
+      }
+    }
+
+    // Test valid API URLs and normalizations
+    const validUrl = 'https://vkczojjnhmtnsgdwvxdj.supabase.co/functions/v1/api';
+    if (validateApiBaseUrl(validUrl).isValid !== true) {
+      throw new Error('Expected valid Supabase URL to pass validation');
+    }
+    if (resolveApiBaseUrl(validUrl) !== validUrl) {
+      throw new Error('Expected resolveApiBaseUrl to preserve valid URL');
+    }
+    if (resolveApiBaseUrl(`${validUrl}/`) !== validUrl) {
+      throw new Error('Expected resolveApiBaseUrl to strip trailing slash');
+    }
+    if (resolveApiBaseUrl('https://vkczojjnhmtnsgdwvxdj.supabase.co') !== validUrl) {
+      throw new Error('Expected resolveApiBaseUrl to normalize bare Supabase domain to /functions/v1/api');
+    }
+
+    // Test Anon Key validation
+    if (validateAnonKey('').isValid !== false) throw new Error('Expected empty anon key to be invalid');
+    if (validateAnonKey('your_supabase_anon_public_key_here').isValid !== false) {
+      throw new Error('Expected placeholder anon key to be invalid');
+    }
+    if (validateAnonKey('sb_publishable_test_token_valid_key').isValid !== true) {
+      throw new Error('Expected valid anon key to pass validation');
+    }
+    if (resolveAnonKey('your_supabase_anon_public_key_here') !== '') {
+      throw new Error('Expected resolveAnonKey to fail cleanly on placeholder key');
+    }
+    if (resolveAnonKey('sb_publishable_test_token_valid_key') !== 'sb_publishable_test_token_valid_key') {
+      throw new Error('Expected resolveAnonKey to return valid key');
+    }
+  });
+
   console.log('\n======================================================');
   console.log(` RESULTS: ${passed} PASSED, ${failed} FAILED`);
   console.log('======================================================\n');
