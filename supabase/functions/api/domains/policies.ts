@@ -6,6 +6,13 @@ import { extractTextFromBytes } from '../../_shared/documentParser.ts';
 
 export async function handleInterpretPolicy(req: Request, adminClient: SupabaseClient): Promise<Response> {
   try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
+    if (!['compliance_officer', 'admin'].includes(user.role)) {
+      return errorResponse('Forbidden: Only compliance officers and administrators can interpret policy documents.', 403);
+    }
+
     const contentType = req.headers.get('content-type') || '';
     let title = '';
     let policyText = '';
@@ -33,16 +40,18 @@ export async function handleInterpretPolicy(req: Request, adminClient: SupabaseC
     let extractedText = policyText;
 
     if (uploadedFile) {
-      if (uploadedFile.size > 20 * 1024 * 1024) {
-        return errorResponse('File size exceeds the 20MB limit.', 400);
+      const MAX_UPLOAD_SIZE = 10 * 1024 * 1024; // 10MB safe ceiling for Edge isolate
+      if (uploadedFile.size > MAX_UPLOAD_SIZE) {
+        return errorResponse('File size exceeds the 10MB limit.', 400);
       }
-      const ext = uploadedFile.name.slice(uploadedFile.name.lastIndexOf('.')).toLowerCase();
+      const safeFilename = uploadedFile.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const ext = safeFilename.slice(safeFilename.lastIndexOf('.')).toLowerCase();
       if (!['.pdf', '.txt', '.docx'].includes(ext)) {
         return errorResponse('Only PDF, TXT, and DOCX files are supported right now.', 400);
       }
       const bytes = new Uint8Array(await uploadedFile.arrayBuffer());
-      extractedText = (await extractTextFromBytes(bytes, uploadedFile.name)).trim();
-      sourceName = uploadedFile.name;
+      extractedText = (await extractTextFromBytes(bytes, safeFilename)).trim();
+      sourceName = safeFilename;
     }
 
     const rules = await aiRules(extractedText);
@@ -59,6 +68,10 @@ export async function handleSavePolicy(req: Request, adminClient: SupabaseClient
   try {
     const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
     if (authErr || !user) return authErr!;
+
+    if (!['compliance_officer', 'admin'].includes(user.role)) {
+      return errorResponse('Forbidden: Only compliance officers and administrators can save policies.', 403);
+    }
 
     const contentType = req.headers.get('content-type') || '';
     let title = 'Untitled policy';
@@ -85,12 +98,19 @@ export async function handleSavePolicy(req: Request, adminClient: SupabaseClient
     let documentPath: string | null = null;
 
     if (uploadedFile) {
-      if (uploadedFile.size > 20 * 1024 * 1024) {
-        return errorResponse('File size exceeds the 20MB limit.', 400);
+      const MAX_UPLOAD_SIZE = 10 * 1024 * 1024; // 10MB
+      if (uploadedFile.size > MAX_UPLOAD_SIZE) {
+        return errorResponse('File size exceeds the 10MB limit.', 400);
       }
-      sourceName = uploadedFile.name;
+      const safeFilename = uploadedFile.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const ext = safeFilename.slice(safeFilename.lastIndexOf('.')).toLowerCase();
+      if (!['.pdf', '.txt', '.docx'].includes(ext)) {
+        return errorResponse('Only PDF, TXT, and DOCX files are supported.', 400);
+      }
+
+      sourceName = safeFilename;
       const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-      const storageKey = `policies/${uniqueSuffix}-${uploadedFile.name}`;
+      const storageKey = `policies/${uniqueSuffix}-${safeFilename}`;
       const bytes = new Uint8Array(await uploadedFile.arrayBuffer());
 
       // Upload to Supabase Storage
@@ -107,7 +127,7 @@ export async function handleSavePolicy(req: Request, adminClient: SupabaseClient
       documentPath = storageKey;
 
       if (!policyText) {
-        policyText = (await extractTextFromBytes(bytes, uploadedFile.name)).trim();
+        policyText = (await extractTextFromBytes(bytes, safeFilename)).trim();
       }
     }
 
@@ -169,6 +189,9 @@ export async function handleSavePolicy(req: Request, adminClient: SupabaseClient
 
 export async function handleGetPolicies(req: Request, adminClient: SupabaseClient): Promise<Response> {
   try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
     const { data: policies, error } = await adminClient
       .from('policies')
       .select('*')
@@ -196,6 +219,9 @@ export async function handleGetPolicyById(
   adminClient: SupabaseClient
 ): Promise<Response> {
   try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
     const isNum = /^\d+$/.test(idParam);
     let query = adminClient.from('policies').select('*');
 
@@ -227,6 +253,67 @@ export async function handleGetPolicyById(
     }));
 
     return jsonResponse({ policy: formattedPolicy, rules: formattedRules }, 200);
+  } catch (err: unknown) {
+    const error = err as Error;
+    return errorResponse(error.message || 'Internal server error.', 500);
+  }
+}
+
+/**
+ * Generates an authenticated, short-lived signed URL for downloading policy documents.
+ * GET /api/policies/:id/download
+ */
+export async function handleDownloadPolicyDocument(
+  req: Request,
+  idParam: string,
+  adminClient: SupabaseClient
+): Promise<Response> {
+  try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
+    const isNum = /^\d+$/.test(idParam);
+    let query = adminClient.from('policies').select('id, sqlite_id, title, document');
+
+    if (isNum) {
+      query = query.or(`id.eq.${idParam},sqlite_id.eq.${idParam}`);
+    } else {
+      query = query.eq('id', idParam);
+    }
+
+    const { data: policy, error: policyErr } = await query.maybeSingle();
+
+    if (policyErr || !policy) {
+      return errorResponse('Policy not found.', 404);
+    }
+
+    if (!policy.document) {
+      return errorResponse('No document file attached to this policy.', 404);
+    }
+
+    // Path traversal and storage boundary validation
+    const cleanDocPath = policy.document.replace(/^\/+/, '');
+    if (!cleanDocPath.startsWith('policies/') || cleanDocPath.includes('..')) {
+      return errorResponse('Invalid policy document path.', 400);
+    }
+
+    // Generate a secure, time-limited signed download URL (valid for 1 hour / 3600 seconds)
+    const { data: signedData, error: signErr } = await adminClient.storage
+      .from('policies')
+      .createSignedUrl(cleanDocPath, 3600);
+
+    if (signErr || !signedData?.signedUrl) {
+      console.error('Signed URL generation error:', signErr);
+      return errorResponse('Failed to generate document download URL.', 500);
+    }
+
+    return jsonResponse({
+      id: policy.sqlite_id || policy.id,
+      title: policy.title,
+      document_path: policy.document,
+      download_url: signedData.signedUrl,
+      expires_in: 3600,
+    }, 200);
   } catch (err: unknown) {
     const error = err as Error;
     return errorResponse(error.message || 'Internal server error.', 500);

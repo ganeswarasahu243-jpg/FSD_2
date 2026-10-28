@@ -1,4 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
+import { authenticateRequest } from '../../_shared/auth.ts';
 import { jsonResponse, errorResponse } from '../../_shared/cors.ts';
 import {
   severityFromText,
@@ -57,6 +58,9 @@ export async function createViolationsForLog(
 
 export async function handleGetDashboard(req: Request, adminClient: SupabaseClient): Promise<Response> {
   try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
     const [
       { count: totalPolicies },
       { count: totalRules },
@@ -93,6 +97,9 @@ export async function handleGetDashboard(req: Request, adminClient: SupabaseClie
 
 export async function handleGetSiteData(req: Request, adminClient: SupabaseClient): Promise<Response> {
   try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
     const [
       { count: totalPolicies },
       { count: totalRules },
@@ -274,6 +281,13 @@ export async function handleGetSiteData(req: Request, adminClient: SupabaseClien
 
 export async function handleRecordActivityDemo(req: Request, adminClient: SupabaseClient): Promise<Response> {
   try {
+    const { user: authUser, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !authUser) return authErr!;
+
+    if (!['compliance_officer', 'admin'].includes(authUser.role)) {
+      return errorResponse('Forbidden: Compliance officer or administrator role required to run activity simulations.', 403);
+    }
+
     const body = await req.json().catch(() => ({}));
     const employee = (body.employee || 'demo.employee').trim();
     const action = (body.action || '').trim();
@@ -356,6 +370,13 @@ export async function handleResolveAlert(
   adminClient: SupabaseClient
 ): Promise<Response> {
   try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
+    if (!['compliance_officer', 'admin'].includes(user.role)) {
+      return errorResponse('Forbidden: Only compliance officers and administrators can resolve alerts.', 403);
+    }
+
     const isNum = /^\d+$/.test(violationId);
     let query = adminClient.from('violations').select('id, sqlite_id, log_id');
 
@@ -404,6 +425,13 @@ export async function handleKeepAlertPending(
   adminClient: SupabaseClient
 ): Promise<Response> {
   try {
+    const { user, errorResponse: authErr } = await authenticateRequest(req, adminClient);
+    if (authErr || !user) return authErr!;
+
+    if (!['compliance_officer', 'admin'].includes(user.role)) {
+      return errorResponse('Forbidden: Only compliance officers and administrators can update alert status.', 403);
+    }
+
     const isNum = /^\d+$/.test(violationId);
     let query = adminClient.from('violations').select(`
       id,

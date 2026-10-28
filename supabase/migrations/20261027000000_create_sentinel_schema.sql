@@ -135,21 +135,14 @@ CREATE POLICY "service_role_all_logs" ON public.logs
 CREATE POLICY "service_role_all_violations" ON public.violations
   FOR ALL TO service_role USING (true) WITH CHECK (true);
 
--- Authenticated and Anon read policies (for direct client queries if needed)
-CREATE POLICY "allow_read_users_profile" ON public.users
-  FOR SELECT TO authenticated, anon USING (true);
-
-CREATE POLICY "allow_read_policies" ON public.policies
-  FOR SELECT TO authenticated, anon USING (true);
-
-CREATE POLICY "allow_read_rules" ON public.rules
-  FOR SELECT TO authenticated, anon USING (true);
-
-CREATE POLICY "allow_read_logs" ON public.logs
-  FOR SELECT TO authenticated, anon USING (true);
-
-CREATE POLICY "allow_read_violations" ON public.violations
-  FOR SELECT TO authenticated, anon USING (true);
+-- 8. Least-Privilege Access Configuration
+-- In Sentinel Core architecture, all client operations are mediated by Edge Functions using service_role.
+-- Direct PostgREST table access from anonymous users is explicitly revoked.
+REVOKE ALL ON TABLE public.users FROM anon;
+REVOKE ALL ON TABLE public.policies FROM anon;
+REVOKE ALL ON TABLE public.rules FROM anon;
+REVOKE ALL ON TABLE public.logs FROM anon;
+REVOKE ALL ON TABLE public.violations FROM anon;
 
 -- 9. Storage Bucket setup for policy documents
 INSERT INTO storage.buckets (id, name, public)

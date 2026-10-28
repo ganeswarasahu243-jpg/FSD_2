@@ -31,7 +31,12 @@ export default function LoginPage() {
         body: { username: username.trim(), password },
       });
 
-      setAuthSession(data.access, data.refresh, data.user?.username || username);
+      setAuthSession(
+        data.access,
+        data.refresh,
+        data.user?.username || username,
+        data.user?.role || 'employee'
+      );
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Login failed. Please verify credentials.');

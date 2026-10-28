@@ -13,6 +13,7 @@ import {
   handleSavePolicy,
   handleGetPolicies,
   handleGetPolicyById,
+  handleDownloadPolicyDocument,
 } from './domains/policies.ts';
 import {
   handleGetDashboard,
@@ -54,6 +55,9 @@ export async function handleRequest(req: Request): Promise<Response> {
   try {
     // Health endpoint (served directly without requiring database connection)
     if (normalizedPath === '/health' || normalizedPath === '') {
+      if (method !== 'GET') {
+        return errorResponse(`Method ${method} not allowed for ${normalizedPath || '/'}.`, 405);
+      }
       return jsonResponse({
         status: 'ok',
         service: 'sentinel-core',
@@ -66,6 +70,9 @@ export async function handleRequest(req: Request): Promise<Response> {
     const getAdmin = () => getSupabaseAdmin();
 
     if (normalizedPath === '/health/ready') {
+      if (method !== 'GET') {
+        return errorResponse(`Method ${method} not allowed for /health/ready.`, 405);
+      }
       const { error } = await getAdmin().from('users').select('id', { head: true, count: 'exact' }).limit(1);
       if (error) {
         return jsonResponse({ status: 'not_ready', database: 'disconnected', error: error.message }, 503);
@@ -98,6 +105,11 @@ export async function handleRequest(req: Request): Promise<Response> {
       return await handleGetPolicies(req, getAdmin());
     }
 
+    const downloadMatch = normalizedPath.match(/^\/policies\/([^/]+)\/download$/);
+    if (downloadMatch && method === 'GET') {
+      return await handleDownloadPolicyDocument(req, downloadMatch[1], getAdmin());
+    }
+
     const policyMatch = normalizedPath.match(/^\/policies\/([^/]+)$/);
     if (policyMatch && method === 'GET') {
       return await handleGetPolicyById(req, policyMatch[1], getAdmin());
@@ -119,7 +131,7 @@ export async function handleRequest(req: Request): Promise<Response> {
       return await handleResolveAlert(req, resolveMatch[1], getAdmin());
     }
 
-    const pendingMatch = normalizedPath.match(/^\/alerts\/([^/]+)\/pending$/);
+    const pendingMatch = normalizedPath.match(/^\/alerts\/([^/]+)\/(pending|keep-pending)$/);
     if (pendingMatch && method === 'POST') {
       return await handleKeepAlertPending(req, pendingMatch[1], getAdmin());
     }

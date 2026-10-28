@@ -11,7 +11,7 @@ import {
   ShieldAlert,
   Zap,
 } from 'lucide-react';
-import { apiRequest } from '../services/api';
+import { apiRequest, isComplianceOrAdmin } from '../services/api';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -331,24 +331,32 @@ export default function MonitoringPage() {
                       </div>
 
                       <div className="flex md:flex-col gap-2 shrink-0 pt-2 md:pt-0">
-                        <Button
-                          variant="success"
-                          size="sm"
-                          icon={CheckCircle2}
-                          onClick={() => handleAlertAction(item.id, 'solve')}
-                          className="flex-1 md:flex-none"
-                        >
-                          Mark Solved
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          icon={Clock}
-                          onClick={() => handleAlertAction(item.id, 'pending')}
-                          className="flex-1 md:flex-none"
-                        >
-                          Keep Pending
-                        </Button>
+                        {isComplianceOrAdmin() ? (
+                          <>
+                            <Button
+                              variant="success"
+                              size="sm"
+                              icon={CheckCircle2}
+                              onClick={() => handleAlertAction(item.id, 'solve')}
+                              className="flex-1 md:flex-none"
+                            >
+                              Mark Solved
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              icon={Clock}
+                              onClick={() => handleAlertAction(item.id, 'pending')}
+                              className="flex-1 md:flex-none"
+                            >
+                              Keep Pending
+                            </Button>
+                          </>
+                        ) : (
+                          <span className="text-[11px] text-slate-400 italic px-2 py-1">
+                            Triage restricted to Compliance / Admin
+                          </span>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -426,10 +434,11 @@ export default function MonitoringPage() {
                 <Button
                   type="submit"
                   loading={submittingDemo}
+                  disabled={!isComplianceOrAdmin()}
                   icon={Play}
                   fullWidth
                 >
-                  Trigger Simulation
+                  {isComplianceOrAdmin() ? 'Trigger Simulation' : 'Simulation Restricted (Compliance/Admin)'}
                 </Button>
               </form>
             </CardContent>

@@ -13,7 +13,7 @@ import {
   ChevronRight,
   ShieldCheck,
 } from 'lucide-react';
-import { apiRequest } from '../services/api';
+import { apiRequest, isComplianceOrAdmin } from '../services/api';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -334,26 +334,33 @@ export default function PoliciesPage() {
                 </div>
 
                 {/* Action Buttons */}
+                {!isComplianceOrAdmin() && (
+                  <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800">
+                    Policy ingestion and rule interpretation requires Compliance Officer or Administrator role.
+                  </div>
+                )}
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
                   <Button
                     type="submit"
                     loading={analyzing}
+                    disabled={!isComplianceOrAdmin()}
                     icon={Sparkles}
                     size="md"
                     className="flex-1 sm:flex-none"
                   >
-                    Analyze Policy
+                    {isComplianceOrAdmin() ? 'Analyze Policy' : 'Analyze (Compliance/Admin Only)'}
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
                     loading={saving}
+                    disabled={!isComplianceOrAdmin()}
                     icon={Save}
                     size="md"
                     onClick={handleSavePolicy}
                     className="flex-1 sm:flex-none"
                   >
-                    Save to MongoDB
+                    {isComplianceOrAdmin() ? 'Save Policy' : 'Save (Compliance/Admin Only)'}
                   </Button>
                 </div>
               </form>

@@ -12,7 +12,8 @@ export async function handleRegister(req: Request, adminClient: SupabaseClient):
     const body = await req.json().catch(() => ({}));
     const username = (body.username || '').trim();
     const password = body.password || '';
-    const role = (body.role || 'employee').trim();
+    // Enforce least-privilege: public registration always creates standard 'employee' role.
+    const role = 'employee';
     const email = (body.email || '').trim();
     const firstName = (body.first_name || '').trim();
     const lastName = (body.last_name || '').trim();
@@ -87,7 +88,7 @@ export async function handleLogin(req: Request, adminClient: SupabaseClient): Pr
 
     const { data: user, error } = await adminClient
       .from('users')
-      .select('id, sqlite_id, username, password, role')
+      .select('id, sqlite_id, username, password, role, is_active')
       .ilike('username', username)
       .maybeSingle();
 
@@ -98,6 +99,10 @@ export async function handleLogin(req: Request, adminClient: SupabaseClient): Pr
     const isMatch = await verifyPassword(password, user.password || '');
     if (!isMatch) {
       return errorResponse('Invalid username or password.', 401);
+    }
+
+    if (user.is_active === false) {
+      return errorResponse('Account is deactivated. Contact an administrator.', 403);
     }
 
     const tokens = await generateTokens(user);
@@ -163,7 +168,10 @@ export async function handleUpdateProfile(req: Request, adminClient: SupabaseCli
       updateData.username = trimmed;
     }
 
-    if (body.role !== undefined) updateData.role = (body.role || '').trim();
+    // Enforce RBAC: Only administrators may change roles. Non-admin users cannot elevate their role.
+    if (body.role !== undefined && user.role === 'admin') {
+      updateData.role = (body.role || '').trim();
+    }
     if (body.first_name !== undefined) updateData.first_name = (body.first_name || '').trim();
     if (body.last_name !== undefined) updateData.last_name = (body.last_name || '').trim();
     if (body.email !== undefined) updateData.email = (body.email || '').trim();

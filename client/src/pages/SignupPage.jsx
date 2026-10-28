@@ -44,7 +44,12 @@ export default function SignupPage() {
         },
       });
 
-      setAuthSession(data.access, data.refresh, data.user?.username || username);
+      setAuthSession(
+        data.access,
+        data.refresh,
+        data.user?.username || username,
+        data.user?.role || 'employee'
+      );
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Registration failed. Please check your details.');

@@ -1,6 +1,7 @@
 const TOKEN_KEY = 'sentinel_access_token';
 const REFRESH_KEY = 'sentinel_refresh_token';
 const USER_KEY = 'sentinel_username';
+const ROLE_KEY = 'sentinel_user_role';
 
 const RAW_API_BASE = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) || '';
 const API_BASE_URL = RAW_API_BASE.replace(/\/+$/, '');
@@ -10,17 +11,22 @@ export const getApiBaseUrl = () => API_BASE_URL;
 export const getAccessToken = () => localStorage.getItem(TOKEN_KEY);
 export const getRefreshToken = () => localStorage.getItem(REFRESH_KEY);
 export const getStoredUsername = () => localStorage.getItem(USER_KEY);
+export const getStoredRole = () => localStorage.getItem(ROLE_KEY) || 'employee';
+export const isComplianceOrAdmin = () => ['compliance_officer', 'admin'].includes(getStoredRole());
+export const isAdmin = () => getStoredRole() === 'admin';
 
-export const setAuthSession = (access, refresh, username) => {
+export const setAuthSession = (access, refresh, username, role) => {
   if (access) localStorage.setItem(TOKEN_KEY, access);
   if (refresh) localStorage.setItem(REFRESH_KEY, refresh);
   if (username) localStorage.setItem(USER_KEY, username);
+  if (role) localStorage.setItem(ROLE_KEY, role);
 };
 
 export const clearAuthSession = () => {
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(REFRESH_KEY);
   localStorage.removeItem(USER_KEY);
+  localStorage.removeItem(ROLE_KEY);
 };
 
 export const isAuthenticated = () => Boolean(getAccessToken());

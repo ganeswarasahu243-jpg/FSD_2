@@ -5,7 +5,6 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 // deno-lint-ignore no-explicit-any
 const bcrypt: any = (bcryptPkg as any).default || bcryptPkg;
 
-const DEFAULT_JWT_SECRET = 'sentinel_jwt_secret_production_key_change_in_prod_123456';
 const getEnv = (key: string): string | undefined => {
   if (typeof Deno !== 'undefined' && Deno.env && Deno.env.get) {
     return Deno.env.get(key);
@@ -16,11 +15,20 @@ const getEnv = (key: string): string | undefined => {
   return undefined;
 };
 
-const JWT_SECRET = getEnv('JWT_SECRET') || DEFAULT_JWT_SECRET;
-const JWT_EXPIRES_IN = getEnv('JWT_EXPIRES_IN') || '60m';
-const REFRESH_TOKEN_EXPIRES_IN = getEnv('REFRESH_TOKEN_EXPIRES_IN') || '7d';
+/**
+ * Retrieves the cryptographic secret for signing and validating JWT tokens.
+ * Fails safely with a fatal error if JWT_SECRET is not configured in environment secrets.
+ */
+export const getJwtSecretKey = (): Uint8Array => {
+  const secret = getEnv('JWT_SECRET');
+  if (!secret || !secret.trim()) {
+    throw new Error('Fatal: JWT_SECRET environment variable is missing.');
+  }
+  return new TextEncoder().encode(secret);
+};
 
-const secretKey = new TextEncoder().encode(JWT_SECRET);
+const getExpiresIn = (): string => getEnv('JWT_EXPIRES_IN') || '60m';
+const getRefreshExpiresIn = (): string => getEnv('REFRESH_TOKEN_EXPIRES_IN') || '7d';
 
 export interface UserPayload {
   id: string | number;
@@ -30,6 +38,23 @@ export interface UserPayload {
   email?: string;
   first_name?: string;
   last_name?: string;
+  is_active?: boolean;
+}
+
+export function requireRole(user: UserPayload | null, allowedRoles: string[]): Response | null {
+  if (!user) {
+    return new Response(
+      JSON.stringify({ detail: 'Authentication credentials were not provided.' }),
+      { status: 401, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+  if (!allowedRoles.includes(user.role)) {
+    return new Response(
+      JSON.stringify({ detail: 'Forbidden: Insufficient role permissions.' }),
+      { status: 403, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+  return null;
 }
 
 export async function generateTokens(user: {
@@ -38,6 +63,7 @@ export async function generateTokens(user: {
   username: string;
   role?: string;
 }): Promise<{ access: string; refresh: string }> {
+  const secretKey = getJwtSecretKey();
   const payload = {
     id: user.id.toString(),
     sqliteId: user.sqlite_id || (typeof user.id === 'number' ? user.id : null),
@@ -48,13 +74,13 @@ export async function generateTokens(user: {
   const access = await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime(JWT_EXPIRES_IN)
+    .setExpirationTime(getExpiresIn())
     .sign(secretKey);
 
   const refresh = await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime(REFRESH_TOKEN_EXPIRES_IN)
+    .setExpirationTime(getRefreshExpiresIn())
     .sign(secretKey);
 
   return { access, refresh };
@@ -62,6 +88,7 @@ export async function generateTokens(user: {
 
 export async function verifyToken(token: string): Promise<Record<string, unknown> | null> {
   try {
+    const secretKey = getJwtSecretKey();
     const { payload } = await jwtVerify(token, secretKey);
     return payload as Record<string, unknown>;
   } catch {
@@ -197,6 +224,17 @@ export async function authenticateRequest(
     };
   }
 
+  // Reject authentication if user account has been deactivated
+  if (user.is_active === false) {
+    return {
+      user: null,
+      errorResponse: new Response(
+        JSON.stringify({ detail: 'User account is deactivated.' }),
+        { status: 403, headers: { 'Content-Type': 'application/json' } }
+      ),
+    };
+  }
+
   return { user: user as UserPayload, errorResponse: null };
 }
 
@@ -219,9 +257,11 @@ export async function optionalAuthenticateRequest(
 
   const { data: user } = await adminClient
     .from('users')
-    .select('id, sqlite_id, username, role, email, first_name, last_name')
+    .select('id, sqlite_id, username, role, email, first_name, last_name, is_active')
     .eq('id', payload.id)
     .single();
+
+  if (!user || user.is_active === false) return null;
 
   return (user as UserPayload) || null;
 }

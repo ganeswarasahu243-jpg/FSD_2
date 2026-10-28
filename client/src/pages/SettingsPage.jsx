@@ -11,7 +11,7 @@ import {
   Layers,
   Sparkles,
 } from 'lucide-react';
-import { apiRequest, setAuthSession } from '../services/api';
+import { apiRequest, setAuthSession, getStoredRole } from '../services/api';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -102,7 +102,12 @@ export default function SettingsPage() {
       });
 
       if (res.access && res.refresh) {
-        setAuthSession(res.access, res.refresh, res.user?.username || profile.username);
+        setAuthSession(
+          res.access,
+          res.refresh,
+          res.user?.username || profile.username,
+          res.user?.role || profile.role
+        );
       }
 
       setProfile((prev) => ({ ...prev, password: '', confirm_password: '' }));
@@ -219,7 +224,12 @@ export default function SettingsPage() {
                   label="Role"
                   value={profile.role}
                   onChange={(e) => setProfile({ ...profile, role: e.target.value })}
-                  helperText="e.g. employee, compliance_officer, admin"
+                  disabled={getStoredRole() !== 'admin'}
+                  helperText={
+                    getStoredRole() === 'admin'
+                      ? 'Administrator privilege: assign employee, compliance_officer, or admin'
+                      : 'Role assignment is locked. Contact an administrator to request elevation.'
+                  }
                 />
               </div>
 
