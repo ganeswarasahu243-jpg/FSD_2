@@ -1,250 +1,211 @@
-# Policy Pilot / Sentinel Core — MERN Stack Migration
+# Sentinel Core
 
-Enterprise Policy Intelligence and Compliance Monitoring System, successfully migrated from Django/SQLite to a high-performance **MERN (MongoDB, Express.js, React.js, Node.js)** architecture.
+Sentinel Core is a policy intelligence and compliance monitoring platform. It
+turns policy documents into actionable rules, records employee activity, and
+surfaces potential compliance violations through a React dashboard.
 
----
+The repository contains two supported application stacks:
 
-## 1. Project Detection & Architecture Comparison
+- **Express stack:** React + Vite, Node.js + Express, and MongoDB.
+- **Supabase stack:** Supabase PostgreSQL, Edge Functions, Storage, and the same
+  React client.
 
-### Original Architecture (Detected)
-- **Backend Framework**: Python 3.11 with Django 5.x & Django REST Framework (`djangorestframework`)
-- **Authentication**: `djangorestframework-simplejwt` (JWT access token in localStorage, PBKDF2 password hashing)
-- **Database**: SQLite 3 (`svp/uday/db.sqlite3`)
-- **AI / NLP**: Hugging Face `transformers` (`google/flan-t5-base`) with heuristic regex fallback
-- **Document Processing**: `PyPDF2`, `python-docx`
-- **Frontend**: Django Template rendering (`svp/templates/*.html`) with custom utility CSS (`ui.css`)
+## Features
 
-### New MERN Architecture (Migrated)
-- **Frontend**: React 18 SPA with React Router v6, custom responsive utility styling, Lucide icons, and Vite build tooling (`client/`)
-- **Backend**: Node.js v24 & Express.js RESTful API (`server/`)
-- **Database**: MongoDB with Mongoose ODM (database: `sentinel_compliance`)
-- **Authentication**: JWT authentication with dual-hash password verification (supports legacy Django PBKDF2 hashes + bcrypt for new users)
-- **Document Processing**: Native Node.js document extraction via `pdf-parse` and `mammoth` (no heavy Python runtime required)
-- **AI / NLP Rule Engine**: Deterministic sentence extraction and NLP risk heuristic engine matching Django's rule generation logic
+- User registration, login, JWT sessions, and profile management
+- PDF, DOCX, and plain-text policy parsing
+- Deterministic rule extraction and compliance-risk scoring
+- Policy, rule, activity log, and violation management
+- Dashboard metrics, audits, monitoring alerts, workflows, and framework views
+- Legacy Django PBKDF2 password verification alongside bcrypt
+- Health and readiness endpoints for deployments
+- Docker support for the unified Express deployment
 
----
+## Architecture
 
-## 2. Monorepo Directory Structure
+```text
+client/                  React 18 single-page application
+  ├── pages/              Dashboard, policies, monitoring, audits, settings
+  ├── components/        Shared layout and UI components
+  └── services/          API client and authentication helpers
 
-```
-c:\coding\SVP\
-├── package.json              # Monorepo orchestration scripts
-├── mongodb_data/             # Local MongoDB data directory
-├── server/                   # Express.js & Node.js Backend
-│   ├── config/               # Database connection (Mongoose)
-│   ├── controllers/          # Business logic (Auth, Policy, Monitoring, Logs, Violations)
-│   ├── middleware/           # JWT Auth, Multer file upload, Error handling
-│   ├── models/               # Mongoose schemas (User, Policy, Rule, Log, Violation)
-│   ├── routes/               # Express REST routes (/api/auth, /api, /api/logs, etc.)
-│   ├── scripts/              # Migration script (migrateFromSqlite.js, exportSqliteData.py)
-│   ├── services/             # Document parser (PDF/DOCX) & Rule engine (NLP)
-│   ├── tests/                # Automated API test suite (api.test.js)
-│   ├── uploads/              # Uploaded policies storage
-│   ├── app.js                # Express app setup and static serving
-│   ├── server.js             # HTTP server entry point
-│   ├── .env                  # Environment variables
-│   └── .env.example          # Environment variable template
-├── client/                   # React.js SPA Frontend
-│   ├── src/
-│   │   ├── components/       # Layout, Sidebar, UserHeader, ProtectedRoute
-│   │   ├── pages/            # 10 Pages (Landing, Login, Signup, Dashboard, etc.)
-│   │   ├── services/         # API fetch client & Auth token management
-│   │   ├── App.jsx           # React Router routing table
-│   │   ├── index.css         # UI CSS design system
-│   │   └── main.jsx          # React DOM entry point
-│   ├── index.html            # HTML template with Google Fonts
-│   └── vite.config.js        # Vite configuration with API proxy
-└── svp/                      # Original codebase (fully preserved and untouched)
+server/                  Express API and MongoDB implementation
+  ├── controllers/        Request and business-logic handlers
+  ├── models/             User, Policy, Rule, Log, and Violation schemas
+  ├── routes/             REST API route definitions
+  ├── services/           Document parser and rule engine
+  ├── scripts/            Migration, backup, and provisioning utilities
+  └── tests/              API and Supabase integration tests
+
+supabase/                PostgreSQL migrations and Edge Functions
 ```
 
----
+## Requirements
 
-## 3. Database Models & Schema
+- Node.js 18 or newer
+- npm
+- MongoDB 7+ for the Express stack, or a Supabase project for the Supabase stack
+- Docker and Docker Compose (optional)
+- Supabase CLI (optional, for local Supabase development)
 
-### User (`server/models/User.js`)
-- `username`: String (required, unique, case-insensitive index)
-- `password`: String (supports Django PBKDF2 `pbkdf2_sha256$...` and Bcrypt `$2b$...`)
-- `role`: String (default: `'employee'`)
-- `email`: String (optional)
-- `first_name`: String (optional)
-- `last_name`: String (optional)
-- `sqliteId`: Number (original SQLite primary key)
-- `date_joined`: Date (default: `Date.now`)
+## Quick start: Express and MongoDB
 
-### Policy (`server/models/Policy.js`)
-- `title`: String (required)
-- `document`: String (relative file path in uploads)
-- `source_name`: String (original filename or input label)
-- `content_text`: String (extracted or submitted policy text)
-- `uploaded_by`: ObjectId ref `'User'`
-- `uploaded_by_username`: String
-- `sqliteId`: Number
-- `created_at`: Date
+1. Install dependencies:
 
-### Rule (`server/models/Rule.js`)
-- `policy`: ObjectId ref `'Policy'` (required)
-- `description`: String (policy clause or rule description)
-- `condition`: String (applicability condition)
-- `action`: String (recommended business/audit action)
-- `sqliteId`: Number
+   ```bash
+   npm install
+   npm run install:all
+   ```
 
-### Log (`server/models/Log.js`)
-- `user`: ObjectId ref `'User'`
-- `username`: String
-- `action`: String (employee activity text)
-- `sqliteId`: Number
-- `created_at`: Date
+2. Create environment files:
 
-### Violation (`server/models/Violation.js`)
-- `log`: ObjectId ref `'Log'` (required)
-- `message`: String (violation message and triggered rule details)
-- `sqliteId`: Number
-- `created_at`: Date
+   ```bash
+   cp server/.env.example server/.env
+   cp client/.env.example client/.env
+   ```
 
----
+3. Configure `server/.env` with a MongoDB connection and a strong JWT secret:
 
-## 4. API Documentation Summary
+   ```dotenv
+   PORT=5000
+   NODE_ENV=development
+   MONGODB_URI=mongodb://127.0.0.1:27017/sentinel_compliance
+   JWT_SECRET=replace_with_a_long_random_secret_at_least_32_characters
+   CLIENT_URL=http://localhost:5173
+   ```
 
-### Authentication (`/api/auth`)
-| Method | Endpoint | Auth | Description |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register/` | Public | Register new user. Returns JWT access & refresh tokens. |
-| `POST` | `/api/auth/login/` | Public | Authenticate user (supports PBKDF2 & bcrypt). Returns tokens. |
-| `GET` | `/api/auth/me/` | Bearer | Get currently authenticated user details. |
-| `PUT` | `/api/auth/profile/` | Bearer | Update user profile fields (username, role, email, password). |
+4. Start the API and frontend in separate terminals:
 
-### Policy Engine (`/api`)
-| Method | Endpoint | Auth | Description |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/policy-interpreter/` | Public | Parse and analyze policy text or uploaded PDF/DOCX file. |
-| `POST` | `/api/policies/save/` | Bearer | Save policy to MongoDB and generate persistent rules. |
-| `GET` | `/api/policies/` | Public | List all stored policies. |
-| `GET` | `/api/policies/:id/` | Public | Retrieve single policy with its extracted rules. |
+   ```bash
+   npm run dev:server
+   npm run dev:client
+   ```
 
-### Monitoring & Compliance Telemetry (`/api`)
-| Method | Endpoint | Auth | Description |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/dashboard/` | Public | Quick summary metrics (total policies, rules, logs, violations). |
-| `GET` | `/api/site-data/` | Public | Comprehensive dataset for all pages (frameworks, alerts, feeds). |
-| `POST` | `/api/activity-demo/` | Public | Simulate employee activity and evaluate compliance violations. |
-| `POST` | `/api/alerts/:id/resolve/` | Public | Mark alert as solved and remove from active database queue. |
-| `POST` | `/api/alerts/:id/pending/` | Public | Mark alert as still pending in monitoring queue. |
-| `GET` | `/api/logs/` | Public | List all logged user activities. |
-| `GET` | `/api/violations/` | Public | List all detected compliance violations. |
+   The API runs at `http://localhost:5000` and the Vite client at
+   `http://localhost:5173`.
 
----
+For a unified production-style process, build the client and start Express:
 
-## 5. Quick Start & Execution
-
-### Prerequisites
-- Node.js v18+ (tested on Node.js v24.12.0)
-- MongoDB server running locally on `localhost:27017`
-
-### 1. Start MongoDB
-If using the local database folder:
-```powershell
-mongod --dbpath "c:\coding\SVP\mongodb_data" --port 27017
-```
-
-### 2. Run Data Migration
-Migrates existing users, policies, rules, logs, and media files from SQLite into MongoDB:
-```powershell
-npm run migrate:data
-```
-
-### 3. Run Backend Test Suite
-Executes 12 end-to-end integration tests:
-```powershell
-npm test
-```
-
-### 4. Build Frontend for Production
-Compiles the React SPA into `client/dist`:
-```powershell
+```bash
 npm run build
+npm start
 ```
 
-### 5. Start the Application
-- **Production Mode (Unified)**:
-  Starts the Express server which serves both the API and the React production bundle on port 5000:
-  ```powershell
-  npm start
-  ```
-  Open `http://localhost:5000` in your browser.
+Open `http://localhost:5000`.
 
-- **Development Mode (Concurrent)**:
-  - Terminal 1 (Backend): `npm run dev:server` (runs on `http://localhost:5000`)
-  - Terminal 2 (Frontend): `npm run dev:client` (runs on `http://localhost:5173` with proxy)
+## Supabase development
 
----
+The Supabase implementation lives under `supabase/` and uses the same domain
+logic as the Express API.
 
-## 6. Feature Migration Verification Checklist
+1. Install and authenticate with the [Supabase CLI](https://supabase.com/docs/guides/cli).
+2. Start the local stack:
 
-- [x] **Zero Data Loss**: Original `svp/` code, templates, and `db.sqlite3` preserved without modification.
-- [x] **Data Migration**: SQLite users, policies, rules, and activity logs transferred to MongoDB collections with mapped IDs.
-- [x] **Legacy Password Compatibility**: Django PBKDF2 hash verification allows original users (`jayasurya`) to authenticate.
-- [x] **Authentication & JWT**: Bearer token authentication, profile management, and token refresh.
-- [x] **Document Parsing**: Native PDF, DOCX, and TXT parsing in Node.js replacing heavy Python libraries.
-- [x] **NLP Rule Engine**: Sentence extraction, risk heuristic scoring, and action generation matching original logic.
-- [x] **Frontend Fidelity**: All 10 pages migrated to React components with identical styling, layout, and user flows.
-- [x] **Interactive Alert Queue**: "Solved" and "Still Pending" workflow actions fully functional.
-- [x] **Framework Coverage**: Real-time coverage calculation for GDPR, SOC 2 Type II, and HIPAA.
-- [x] **Automated Tests**: 12/12 integration tests passing with 100% success rate.
+   ```bash
+   supabase start
+   ```
 
----
+3. Apply migrations and seed data:
 
-## 7. Supabase Edge Functions & PostgreSQL Architecture
+   ```bash
+   supabase db reset
+   ```
 
-The backend has been ported to **TypeScript Supabase Edge Functions** backed by **Supabase PostgreSQL** and **Supabase Storage**.
+4. Configure the Supabase values in `server/.env` and `client/.env`. For local
+   Edge Functions, use:
 
-### Supabase Architecture Components
+   ```dotenv
+   VITE_API_URL=http://127.0.0.1:54321/functions/v1/api
+   ```
 
-1. **Database Schema & Migrations (`supabase/migrations/`)**:
-   - `20261027000000_create_sentinel_schema.sql`: Creates `users`, `policies`, `rules`, `logs`, and `violations` tables with foreign keys, cascade deletes, updated_at triggers, and Row Level Security (RLS) policies.
-   - `20261027000001_seed_sentinel_data.sql`: Idempotent data migration containing all authoritative records (users, policies, rules, logs, violations) migrated with preserved IDs.
-2. **Edge Functions (`supabase/functions/`)**:
-   - `api/index.ts`: High-performance unified Edge Function gateway routing all `/api/*` endpoints with zero frontend code modification.
-   - `_shared/auth.ts`: Dual-hash password verification (Django PBKDF2 SHA-256 + Bcrypt) and standard RFC 7519 HMAC SHA-256 JWT generation/verification via Web Crypto.
-   - `_shared/ruleEngine.ts`: NLP risk heuristic scoring, keyword classification, severity assignment, and rule extraction.
-   - `_shared/documentParser.ts`: In-memory PDF, DOCX, and TXT parsing.
-   - `_shared/cors.ts`: Universal CORS preflight handling.
-   - `_shared/supabaseClient.ts`: Lazy, authenticated Supabase client initialization.
-   - Domain functions: `auth`, `policies`, `monitoring`, `logs`, `violations`, `health`.
-3. **Supabase Storage**:
-   - Bucket: `policies` (stores uploaded policy documents with automatic access policies).
+5. Run the Supabase API server or deploy the functions as appropriate:
 
-### Supabase CLI & Deployment Commands
+   ```bash
+   npm run dev:supabase
+   # or
+   supabase functions serve api --no-verify-jwt
+   ```
 
-```powershell
-# 1. Run Supabase Edge Function test suite
-npm --prefix server run test:supabase
+The local Supabase API is available on port `54321`; Studio is available on
+port `54323`.
 
-# 2. Re-generate or run database seed migration
-npm --prefix server run migrate:supabase
+## Common commands
 
-# 3. Link your Supabase project (CLI)
-npx supabase link --project-ref <your-project-ref>
+| Command | Description |
+| --- | --- |
+| `npm run dev:server` | Start the Express API with Nodemon |
+| `npm run dev:client` | Start the Vite development server |
+| `npm run build` | Build the React client |
+| `npm start` | Start the Express server |
+| `npm test` | Run the Express API test suite |
+| `npm run test:supabase` | Run Supabase function tests |
+| `npm run test:atlas` | Test the configured MongoDB Atlas connection |
+| `npm run migrate:data` | Migrate legacy SQLite data to MongoDB |
+| `npm run migrate:supabase` | Migrate data to Supabase |
+| `npm run backup` | Create a backend data backup |
+| `npm --prefix server run provision:demo` | Provision demo accounts |
 
-# 4. Push PostgreSQL migrations to Supabase
-npx supabase db push
+## API overview
 
-# 5. Deploy Edge Function gateway
-npx supabase functions deploy api --no-verify-jwt
+The Express API is mounted under `/api`:
 
-# 6. Deploy domain functions (optional if calling directly)
-npx supabase functions deploy auth
-npx supabase functions deploy policies
-npx supabase functions deploy monitoring
-npx supabase functions deploy logs
-npx supabase functions deploy violations
-npx supabase functions deploy health
+| Area | Routes |
+| --- | --- |
+| Authentication | `/api/auth/register/`, `/api/auth/login/`, `/api/auth/me/`, `/api/auth/profile/` |
+| Policies | `/api/policy-interpreter/`, `/api/policies/`, `/api/policies/save/` |
+| Monitoring | `/api/dashboard/`, `/api/site-data/`, `/api/activity-demo/`, `/api/alerts/:id/resolve/` |
+| Logs | `/api/logs/` |
+| Violations | `/api/violations/` |
+
+Operational endpoints:
+
+- `GET /health` reports service and database status.
+- `GET /health/ready` returns HTTP 503 until MongoDB is connected.
+
+Authenticated routes use a bearer token:
+
+```http
+Authorization: Bearer <access-token>
 ```
 
-### Frontend Configuration with Supabase
+## Docker
 
-In `client/.env`:
-```env
-VITE_API_URL=https://<your-project-ref>.supabase.co/functions/v1/api
-VITE_SUPABASE_ANON_KEY=<your-supabase-anon-key>
+The production image builds the Vite client and serves it from Express:
+
+```bash
+docker compose up --build
 ```
-The React frontend in `client/src/services/api.js` automatically attaches the Supabase `apikey` header and handles token lifecycle without code changes.
+
+The application is exposed on `http://localhost:5000`. MongoDB data and
+uploaded policy files are stored in named Docker volumes. Set `JWT_SECRET` and
+other deployment values in an environment file before using this setup in
+production.
+
+## Deployment
+
+- **Unified server:** use the root `Dockerfile`, `Procfile`, or `npm run build && npm start`.
+- **Frontend:** deploy `client/` as a Vite application; `client/vercel.json`
+  provides SPA fallback routing.
+- **Supabase:** apply the migrations in `supabase/migrations/` and deploy the
+  Edge Functions under `supabase/functions/`.
+
+Never commit `.env` files, service-role keys, database passwords, or JWT
+secrets. Use the supplied `.env.example` files as templates and rotate any
+secret that has been exposed.
+
+## Data migration
+
+The migration utilities preserve legacy records and support the original
+SQLite-backed application:
+
+```bash
+npm run migrate:data
+npm run migrate:supabase
+```
+
+Review the target database and take a backup before running migrations against
+production data.
+
+## License
+
+This project currently uses the ISC license declared in `package.json`.
